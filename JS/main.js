@@ -24,7 +24,6 @@ let ConfirmacionDatos;
 let ConfirmacionMonto;
 let OtroProducto;
 //ACUMULADORES
-let j = 1;
 let suma = 0;
 let descuento = 0;
 //ARRAYS
@@ -34,37 +33,38 @@ let clientes = [];
 
 // BASE DE DATOS DE PRODUCTOS
 productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
-productos.push(new Producto("Ron", 750, "Zacapa", 42.00, 20));
+productos.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
 productos.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
-productos.push(new Producto("Ron", 1000, "Zacapa", 60.00, 30));
-productos.push(new Producto("Ron", 1500, "Flor de caña", 62.00, 18));
-productos.push(new Producto("Ron", 2000, "Barcelo", 82.00, 14));
-productos.push(new Producto("Whisky", 750, "JW Red label", 22.00, 24));
+productos.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
+productos.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
+productos.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));
+productos.push(new Producto("Whisky", 1000, "JW Red label", 22.00, 24));
 productos.push(new Producto("Whisky", 750, "JW Black label", 22.00, 24));
 productos.push(new Producto("Whisky", 750, "JW Double Black", 22.00, 24));
-productos.push(new Producto("Whisky", 750, "JW Blue label", 22.00, 24));
-productos.push(new Producto("Pisco", 1000, "Quebranta", 22.00, 24));
-productos.push(new Producto("Pisco", 1000, "Quebranta", 22.00, 24));
-productos.push(new Producto("Pisco", 1000, "Quebranta", 22.00, 24));
-productos.push(new Producto("Pisco", 1000, "Quebranta", 22.00, 24));
-productos.push(new Producto("Vino", 750, "Tabernero Tinto", 18.00, 32));
+productos.push(new Producto("Whisky", 750, "JW Gold label", 22.00, 24));
+productos.push(new Producto("Pisco", 750, "SQ Quebranta", 22.00, 24));
+productos.push(new Producto("Pisco", 2000, "SQ Quebranta", 22.00, 24));
+productos.push(new Producto("Pisco", 750, "Cuatro Gallos", 22.00, 24));
+productos.push(new Producto("Pisco", 750, "Intipalka", 22.00, 24));
+productos.push(new Producto("Vino", 750, "Tabernero Blanco", 18.00, 32));
 productos.push(new Producto("Vino", 750, "Tabernero Rosé", 22.00, 32));
 productos.push(new Producto("Vino", 750, "Tabernero Malbec", 24.00, 32));
-productos.push(new Producto("Vino", 750, "Tabernero Carmenere", 24.00, 32));
+productos.push(new Producto("Vino", 1500, "Tabernero Borgoña", 24.00, 32));
 productos.push(new Producto("Gin", 700, "Beefeater", 62.00, 18));
 productos.push(new Producto("Gin", 700, "Beefeater pink", 72.00, 12));
-productos.push(new Producto("Gin", 700, "Beefeater London", 68.00, 22));
+productos.push(new Producto("Gin", 700, "Beefeater orange", 68.00, 22));
 productos.push(new Producto("Bebida", 375, "Red Bull", 22.00, 50));
+productos.push(new Producto("Bebida", 375, "Red Bull Light", 22.00, 50));
 productos.push(new Producto("Bebida", 1500, "Schweppes", 22.00, 52));
-productos.push(new Producto("Bebida", 3000, "Schweppes", 22.00, 52));
-productos.push(new Producto("Bebida", 475, "Coca Cola", 22.00, 78));
-productos.push(new Producto("Bebida", 475, "Coca Cola Zero", 22.00, 72))
-productos.push(new Producto("Bebida", 3000, "Coca Cola", 22.00, 45));
-productos.push(new Producto("Bebida", 1500, "Coca Cola", 22.00, 28));
-productos.push(new Producto("Bebida", 3000, "Coca Cola Zero", 22.00, 39));
-productos.push(new Producto("Hielo", 5000, "High air", 15.00, 24));
-productos.push(new Producto("Hielo", 3000, "High air", 6.00, 24));
-productos.push(new Producto("Hielo", 1000, "High air", 10.00, 24));
+productos.push(new Producto("Bebida", 1500, "Schweppes Citrus", 22.00, 52));
+productos.push(new Producto("Bebida", 500, "Coca Cola", 22.00, 78));
+productos.push(new Producto("Bebida", 500, "Coca Cola Zero", 22.00, 72))
+productos.push(new Producto("Bebida", 2500, "Coca Cola", 22.00, 45));
+productos.push(new Producto("Bebida", 1500, "Coca Cola Zero", 22.00, 28));
+productos.push(new Producto("Bebida", 2500, "Coca Cola Zero", 22.00, 39));
+productos.push(new Producto("Hielo", 3000, "Bells", 15.00, 24));
+productos.push(new Producto("Hielo", 3000, "Artisan", 6.00, 24));
+productos.push(new Producto("Hielo", 1800, "Bells Cokctail", 10.00, 24));
 
 
 localStorage.setItem("Productos",JSON.stringify(productos));
@@ -92,34 +92,79 @@ clientes.push(new Cliente("Maria Pia Muñoz", "903887342", "Calle Madrid 234", "
 
 localStorage.setItem("Clientes",JSON.stringify(clientes));
 
-const productoscard= document.querySelector(`#productos`);
-productos.forEach((el,index) =>{
-    if (el.contenido >= 1000) {
-                    TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
-                   
-                } else {
-                    TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml \n`;
-                
-                }
+let productoscard= document.querySelector(`#productos`);
 
-productoscard.innerHTML = productoscard.innerHTML +`
-<div class="productos__card">
-        <h2>${TextoLista}</h2>
-        <img src="#" alt="#">
-        <h3>Precio: ${el.precio}</h3>
-        <button>Agregar</button>
+function ListaProductos(){
+    productos.forEach((el,index) =>{
+        if (el.contenido >= 1000) {
+            TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
+                       
+        } else {
+            TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml \n`;
+                    
+        }
+    
+    productoscard.innerHTML = productoscard.innerHTML +`
+    <div class="card m-2 productos__card" style="width: 18rem;">
+      <img src="./IMG/imagen${index}.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${TextoLista}</h5>
+        <p class="card-text">Precio: $${el.precio}.00</p>
+        <button type="button" class="btn btn-outline-secondary mx-5 px-5">Agregar</button>
+      </div>
     </div>
-`
-});
+    `
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {ListaProductos()} );
 
 
 
 
+const  FiltroProducto1 = document.querySelector(`#nav__list--all`);
+const  FiltroProducto2 = document.querySelector(`#nav__list--ron`);
+const  FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
+const  FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
+const  FiltroProducto5 = document.querySelector(`#nav__list--vino`);
+const  FiltroProducto6 = document.querySelector(`#nav__list--gin`);
+const  FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 
 
 
+function Filtrocard(array,j){
+    productoscard.innerHTML="";
+    array.forEach((el,index) =>{
+        if (el.contenido >= 1000) {
+            TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
+                       
+        } else {
+            TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml \n`;
+                    
+        }
+    
+    productoscard.innerHTML = productoscard.innerHTML +`
+    <div class="card m-2 productos__card" style="width: 18rem;">
+      <img src="./IMG/imagen${index+j}.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${TextoLista}</h5>
+        <p class="card-text">Precio: $${el.precio}.00</p>
+        <button type="button" class="btn btn-outline-secondary mx-5 px-5">Agregar</button>
+      </div>
+    </div>
+    `
+    });  
+}
 
 
+FiltroProducto1.addEventListener('click',()=>{Filtrocard(productos,0)});
+FiltroProducto3.addEventListener('click',()=>{Filtrocard(ProductoRon,6)})
+FiltroProducto4.addEventListener('click',()=>{Filtrocard(ProductoPisco,10)});
+FiltroProducto5.addEventListener('click',()=>{Filtrocard(ProductoVino,14)});
+FiltroProducto6.addEventListener('click',()=>{Filtrocard(ProductoGin,18)});
+FiltroProducto7.addEventListener('click',()=>{Filtrocard(ProductoBebidas,21)});  
+
+    
 
 
 

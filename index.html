@@ -29,49 +29,41 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div id="nav__list" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Promociones</a>
+                        <li id="nav__list--promociones" class="nav-item ms-2">
+                            <a class="nav-link active" aria-current="page" href="#"><h3><span class="badge bg-secondary">Promociones</span></h3></a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown ms-5 mt-1" >
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Filtrar
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Ron</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Whisky</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Pisco</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Vino</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Gin</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Bebidas</a></li>
+                                <li id="nav__list--all"><a class="dropdown-item" href="#">Todas las Categorías</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--ron"><a class="dropdown-item" href="#">Ron</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--whisky"><a class="dropdown-item" href="#">Whisky</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--pisco"><a class="dropdown-item" href="#">Pisco</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--vino"><a class="dropdown-item" href="#">Vino</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--gin"><a class="dropdown-item" href="#">Gin</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li id="nav__list--bebidas"><a class="dropdown-item" href="#">Bebidas</a></li>
                             </ul>
                         </li>
                         <li>
-                            <form class="d-flex mx-5" role="search">
+                            <form class="d-flex mx-3 mt-2" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                                 <button type="button" class="btn" data-bs-toggle="button">Buscar</button>
                             </form>
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-outline-danger mx-5"><span class="material-symbols-outlined">
+                <button type="button" class="btn btn-outline-secondary mx-5"><span class="material-symbols-outlined">
                     shopping_cart
                     </span></button>
             </div>
@@ -80,7 +72,6 @@
     </header>
     <main>
         <div id="productos"></div>
-
 
     </main>
 

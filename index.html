@@ -18,12 +18,15 @@
 <body>
     <header>
         <!-- Inicio de la Cabecera -->
-        <h1>ALL DAY/ ALL NIGHT</h1>
+        <div class="header__container">
+            <h1 class="header__title">ALL DAY/ ALL NIGHT</h1>
+        </div>
+        
         <!-- Fin de la Cabecera -->
         <!-- Inicio de Navegación -->
         <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">ALL DAY// ALL NIGHT</a>
+                <a class="navbar-brand" href="#">ALL DAY// ALL NIGH</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -57,22 +60,60 @@
                         </li>
                         <li>
                             <form class="d-flex mx-3 mt-2" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                                <button type="button" class="btn" data-bs-toggle="button">Buscar</button>
+                                <input id="nav__search" class="form-control ms-4" type="search" placeholder="Buscar" aria-label="Search">
+                                
                             </form>
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-outline-secondary mx-5"><span class="material-symbols-outlined">
-                    shopping_cart
-                    </span></button>
+                <div class="container-icon">
+                    <div class="container-cart-icon">
+                    <button type="button" class="btn btn-outline-secondary mx-5"><span class="material-symbols-outlined">
+                        shopping_cart
+                        </span></button>
+                        <div class="count-products">
+                            <span id="contador-productos">0</span>
+                        </div>
+                    </div>
+                        <div class="container-cart-products hidden-cart">
+                            <div class="row-product">
+                                <div class="cart-product">
+                                    <div class="info-cart-product">
+                                        <span class="cantidad-producto-carrito">1</span>
+                                        <p class="titulo-producto-carrito">Zapatos Nike</p>
+                                        <span class="precio-producto-carrito">$80</span>
+                                    </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="icon-close"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-total">
+                                <h3>Total:</h3>
+                                <span class="total-pagar">$200</span>
+                            </div>
+                        </div>
+                   
+                </div>
             </div>
         </nav>
         <!-- Fin de Navegación -->
     </header>
     <main>
         <div id="productos"></div>
-
+        
     </main>
 
     <script src="./JS/cliente.js" text="text/javascript"></script>
@@ -82,7 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
-</body>
+        <script type="text/javascript" src="./jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
+    </body>
 
 </html>

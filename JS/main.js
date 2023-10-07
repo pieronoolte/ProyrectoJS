@@ -30,6 +30,7 @@ let descuento = 0;
 let carrito = [];
 let productos = [];
 let clientes = [];
+let ProductosPromociones =[];
 
 // BASE DE DATOS DE PRODUCTOS
 productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
@@ -69,6 +70,20 @@ productos.push(new Producto("Hielo", 1800, "Bells Cokctail", 10.00, 24));
 
 localStorage.setItem("Productos",JSON.stringify(productos));
 
+// BASE DE DATOS PROMOCIONES
+
+ProductosPromociones.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
+ProductosPromociones.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
+ProductosPromociones.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
+ProductosPromociones.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
+ProductosPromociones.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
+ProductosPromociones.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));
+ProductosPromociones.push(new Producto("Whisky", 1000, "JW Red label", 22.00, 24));
+ProductosPromociones.push(new Producto("Whisky", 750, "Red bull 6pack", 22.00, 24));
+ProductosPromociones.push(new Producto("Whisky", 750, "Red bull Light 6pack", 22.00, 24));
+
+
+localStorage.setItem("Promociones",JSON.stringify(ProductosPromociones));
 
 // BASE DE DATOS DE PRODUCTOS POR FILTRO
 
@@ -94,33 +109,41 @@ localStorage.setItem("Clientes",JSON.stringify(clientes));
 
 let productoscard= document.querySelector(`#productos`);
 
-function ListaProductos(){
-    productos.forEach((el,index) =>{
-        if (el.contenido >= 1000) {
-            TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
-                       
-        } else {
+function ListaProductos(array,j){
+    productoscard.innerHTML="";
+    array.forEach((el,index) =>{
+        (el.contenido >= 1000)?
+            TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`:
             TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml \n`;
-                    
-        }
-    
-    productoscard.innerHTML = productoscard.innerHTML +`
+                productoscard.innerHTML = productoscard.innerHTML +`
     <div class="card m-2 productos__card" style="width: 18rem;">
-      <img src="./IMG/imagen${index}.webp" class="card-img-top" alt="...">
+    <img src="./IMG/imagen${index+j}.webp" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${TextoLista}</h5>
-        <p class="card-text">Precio: $${el.precio}.00</p>
-        <button type="button" class="btn btn-outline-secondary mx-5 px-5">Agregar</button>
+        <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
+        <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
       </div>
     </div>
     `
-    });
+    });  
 }
+ 
+// FILTRO DE PRODUCTOS POR INPUT EVENTO KEYUP
+document.addEventListener('keyup', e =>{
+    
+if(e.target.matches(`#nav__search`)){
+    document.querySelectorAll(`.productos__card`).forEach((el) =>{
+        el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+        ?el.classList.remove("filtro")
+        :el.classList.add("filtro")
+        })
+}   
+})
 
-document.addEventListener('DOMContentLoaded', () => {ListaProductos()} );
 
 
 
+document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos,0)} );
 
 const  FiltroProducto1 = document.querySelector(`#nav__list--all`);
 const  FiltroProducto2 = document.querySelector(`#nav__list--ron`);
@@ -129,47 +152,91 @@ const  FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
 const  FiltroProducto5 = document.querySelector(`#nav__list--vino`);
 const  FiltroProducto6 = document.querySelector(`#nav__list--gin`);
 const  FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
+const  FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 
 
-function Filtrocard(array,j){
-    productoscard.innerHTML="";
-    array.forEach((el,index) =>{
-        if (el.contenido >= 1000) {
-            TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
-                       
-        } else {
-            TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml \n`;
-                    
-        }
-    
-    productoscard.innerHTML = productoscard.innerHTML +`
-    <div class="card m-2 productos__card" style="width: 18rem;">
-      <img src="./IMG/imagen${index+j}.webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${TextoLista}</h5>
-        <p class="card-text">Precio: $${el.precio}.00</p>
-        <button type="button" class="btn btn-outline-secondary mx-5 px-5">Agregar</button>
-      </div>
-    </div>
-    `
-    });  
+FiltroProducto1.addEventListener('click',()=>{ListaProductos(productos,0)});
+FiltroProducto2.addEventListener('click',()=>{ListaProductos(ProductoRon,0)});
+FiltroProducto3.addEventListener('click',()=>{ListaProductos(ProductoWhisky,6)})
+FiltroProducto4.addEventListener('click',()=>{ListaProductos(ProductoPisco,10)});
+FiltroProducto5.addEventListener('click',()=>{ListaProductos(ProductoVino,14)});
+FiltroProducto6.addEventListener('click',()=>{ListaProductos(ProductoGin,18)});
+FiltroProducto7.addEventListener('click',()=>{ListaProductos(ProductoBebidas,21)});
+FiltroProducto8.addEventListener('click',()=>{ListaProductos(ProductosPromociones,33)});  
+
+
+// NUEVO PLAN PILOTO
+const btnCart = document.querySelector('.container-cart-icon')
+const containerCartProducts = document.querySelector('.container-cart-products')
+
+btnCart.addEventListener('click', () => {
+    containerCartProducts.classList.toggle('hidden-cart')
+})
+
+
+const cartInfo =document.querySelector(`.cart-product`)
+const rowProduct =document.querySelector(`.row-product`)
+
+const productList = document.querySelector(`#productos`)
+
+let AllProducts =[];
+
+productList.addEventListener(`click`, e => {
+ if(e.target.classList.contains(`btn-add-cart`)){
+    const item = e.target.parentElement;
+    const infocarrito ={
+        cantidad: 1,
+        nombre: item.querySelector(`h5`).textContent,
+        precio: item.querySelector(`span`).textContent,
+    }
+    AllProducts=[...AllProducts,infocarrito];
+    ShowHTML();
+ }
 }
+)
+
+const ContainerCarrito = document.querySelector(`.row-product`);
+const ShowHTML = () => {
+    AllProducts.forEach(e => {
+        ContainerCarrito.innerHTML =  ContainerCarrito.innerHTML + `
+        <div class="cart-product">
+                                    <div class="info-cart-product">
+                                        <span class="cantidad-producto-carrito">${e.cantidad}</span>
+                                        <p class="titulo-producto-carrito">${e.nombre}</p>
+                                        <span class="precio-producto-carrito">${e.precio}</span>
+                                    </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="icon-close"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </div>
+        `
 
 
-FiltroProducto1.addEventListener('click',()=>{Filtrocard(productos,0)});
-FiltroProducto3.addEventListener('click',()=>{Filtrocard(ProductoRon,6)})
-FiltroProducto4.addEventListener('click',()=>{Filtrocard(ProductoPisco,10)});
-FiltroProducto5.addEventListener('click',()=>{Filtrocard(ProductoVino,14)});
-FiltroProducto6.addEventListener('click',()=>{Filtrocard(ProductoGin,18)});
-FiltroProducto7.addEventListener('click',()=>{Filtrocard(ProductoBebidas,21)});  
-
-    
+})}
 
 
 
 
-// // FUNCIONES
+
+
+
+
+
+
+
+// // FUNCIONES 
 
 // function NuevoCliente(cliente, array) {
 //     for (const el of array) {

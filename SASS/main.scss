@@ -33,6 +33,15 @@
     }
 }
 
+@keyframes Letrero {
+    from{
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 100%;
+    }
+}
+
 body {
     background: #000000ab;
     max-width: 1000px;
@@ -71,6 +80,22 @@ body {
         width: 60%
     }
 
+}
+
+#nav__label{
+    background: #000000ab ;
+    border-radius: 8%;
+    width: 175px;
+    overflow: hidden;
+    border: 1px solid #6c757d;
+    box-shadow: inset 0 0 5px white, 0 0 10px white;
+    animation: ParpadearBox 4s infinite backwards;
+    a{
+        color:  white;
+        margin: 0 auto;
+        text-shadow: 0 0 5px white, 0 0 15px white, 0 0 30px white, 0 0 50px white;
+        animation: Letrero 4s infinite backwards;
+    }
 }
 
 .nav__cart {

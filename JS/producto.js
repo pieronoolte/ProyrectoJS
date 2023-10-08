@@ -14,6 +14,7 @@ class Producto {
 
     }
 
+    
     compra = (cantidad) => {
         this.stock = this.stock - cantidad;
     }

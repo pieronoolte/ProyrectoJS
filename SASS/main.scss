@@ -71,7 +71,7 @@ body{
     
 }
 
-#productos{
+#main__listproducts{
     @include dflex(space-between, 1%, 1%, 1%, 1%);
     .productos__card{
         figure{
@@ -100,11 +100,11 @@ body{
 
 
 // NUEVO PLAN PILOTO
-.container-icon{
+.nav__cart{
     position: relative;
 }
 
-.count-products{
+.cart__count{
     position: absolute;
     top: 40%;
     right: 25%;
@@ -120,11 +120,11 @@ body{
     border-radius: 20%;
 }
 
-#contador-productos{
+#cart__countproducts{
     font-size: 15px;
 }
 
-.container-cart-products{
+.cart__content{
     position: absolute;
     top: 50px;
     right: 0;
@@ -137,7 +137,7 @@ body{
     
 }
 
-.cart-product{
+.cart__product{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -154,18 +154,20 @@ body{
 }
 
 .titulo-producto-carrito{
-    font-size: 20px;
+    font-size: 15px;
+    margin-left: 4%;
+    text-align: start;
 }
 
 .precio-producto-carrito{
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 10px;
 }
 
 .cantidad-producto-carrito{
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .icon-close{
@@ -178,17 +180,17 @@ body{
     cursor: pointer;
 }
 
-.cart-total{
+.cart__total{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px 0;
     gap: 20px;
-}
 
-.cart-total h3{
-    font-size: 20px;
-    font-weight: 700;
+    h3{
+        font-size: 20px;
+        font-weight: 700;
+    }
 }
 
 .total-pagar{
@@ -196,7 +198,24 @@ body{
     font-weight: 900;
 }
 
-.hidden-cart{
+.cart__content--hidden{
     display: none;
 }
 
+.cart-empty{
+    padding: 20px;
+    text-align: center;
+}
+
+#btn-add-cart{
+        a{
+            text-decoration: none;
+            color: #6c757d;
+        }
+
+        &:hover a{
+            color:white;
+        }
+        
+
+}

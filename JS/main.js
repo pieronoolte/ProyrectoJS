@@ -24,12 +24,10 @@ let ConfirmacionDatos;
 let ConfirmacionMonto;
 let OtroProducto;
 //ACUMULADORES
-let suma = 0;
-let descuento = 0;
+
 //ARRAYS
 let carrito = [];
 let productos = [];
-let clientes = [];
 let ProductosPromociones =[];
 
 // BASE DE DATOS DE PRODUCTOS
@@ -94,20 +92,11 @@ let ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
 let ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
 let ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo" });
 
+document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos,0)} );
 
-//BASE DE DATOS CLIENTES
-clientes.push(new Cliente("Juan Matias", "903453342", "Calle Vargas 550", "Santa Isabel", 3));
-clientes.push(new Cliente("Pedro Olarte", "903999342", "Av Proceres 120", "Santa Lucia", 1));
-clientes.push(new Cliente("Maria Palacios", "902254875", "Calle Belaunde 123", "Esmeralda", 1));
-clientes.push(new Cliente("Jose Hurtado", "902541157", "Calle Mallorca 180", "Baldelomar", 2));
-clientes.push(new Cliente("Joaquin Milano", "925485742", "Calle Lucia 130", "Surco", 1));
-clientes.push(new Cliente("Berenice Alameda", "955487521", "Calle 2 230", "Santa Isidro", 1));
-clientes.push(new Cliente("Pedro Vallejo", "900153342", "Calle 1 230", "Santa Beatriz", 2));
-clientes.push(new Cliente("Maria Pia Muñoz", "903887342", "Calle Madrid 234", "Santa Isabel", 1));
+let productoscard= document.querySelector(`#main__listproducts`);
 
-localStorage.setItem("Clientes",JSON.stringify(clientes));
-
-let productoscard= document.querySelector(`#productos`);
+// FUNCIONES 
 
 function ListaProductos(array,j){
     productoscard.innerHTML="";
@@ -128,23 +117,12 @@ function ListaProductos(array,j){
     });  
 }
  
-// FILTRO DE PRODUCTOS POR INPUT EVENTO KEYUP
-document.addEventListener('keyup', e =>{
-    
-if(e.target.matches(`#nav__search`)){
-    document.querySelectorAll(`.productos__card`).forEach((el) =>{
-        el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-        ?el.classList.remove("filtro")
-        :el.classList.add("filtro")
-        })
-}   
-})
 
 
 
 
-document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos,0)} );
 
+// FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
 const  FiltroProducto1 = document.querySelector(`#nav__list--all`);
 const  FiltroProducto2 = document.querySelector(`#nav__list--ron`);
 const  FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
@@ -155,7 +133,6 @@ const  FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 const  FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 
-
 FiltroProducto1.addEventListener('click',()=>{ListaProductos(productos,0)});
 FiltroProducto2.addEventListener('click',()=>{ListaProductos(ProductoRon,0)});
 FiltroProducto3.addEventListener('click',()=>{ListaProductos(ProductoWhisky,6)})
@@ -163,24 +140,48 @@ FiltroProducto4.addEventListener('click',()=>{ListaProductos(ProductoPisco,10)})
 FiltroProducto5.addEventListener('click',()=>{ListaProductos(ProductoVino,14)});
 FiltroProducto6.addEventListener('click',()=>{ListaProductos(ProductoGin,18)});
 FiltroProducto7.addEventListener('click',()=>{ListaProductos(ProductoBebidas,21)});
+
+// FILTRO POR NAV PROMOCIONES
 FiltroProducto8.addEventListener('click',()=>{ListaProductos(ProductosPromociones,33)});  
 
+// FILTRO POR INPUT TEXT EVENTO KEYUP
+document.addEventListener('keyup', e =>{
+    
+    if(e.target.matches(`#nav__search`)){
+        document.querySelectorAll(`.productos__card`).forEach((el) =>{
+            el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+            ?el.classList.remove("filtro")
+            :el.classList.add("filtro")
+            })
+    }   
+    })
 
 // NUEVO PLAN PILOTO
-const btnCart = document.querySelector('.container-cart-icon')
-const containerCartProducts = document.querySelector('.container-cart-products')
+const btnCart = document.querySelector('.cart__icon')
+const containerCartProducts = document.querySelector('.cart__content')
+const CartTotal =document.querySelector(`.cart__total`);
+const cartInfo =document.querySelector(`.cart__product`);
+const rowProduct =document.querySelector(`.cart__list`);
+const productList = document.querySelector(`#main__listproducts`);
+const ContainerCarrito = document.querySelector(`.cart__list`);
+
+let ValorTotal = document.querySelector(`.total-pagar`);
+let countProducts = document.querySelector(`#cart__countproducts`);
+let AllProducts =[];
 
 btnCart.addEventListener('click', () => {
-    containerCartProducts.classList.toggle('hidden-cart')
+    containerCartProducts.classList.toggle('cart__content--hidden')
 })
 
 
-const cartInfo =document.querySelector(`.cart-product`)
-const rowProduct =document.querySelector(`.row-product`)
 
-const productList = document.querySelector(`#productos`)
+if(AllProducts.length==0){
+    CartTotal.innerHTML=`
+<h3>El carrito esta vacio</h3>
+<span class="total-pagar"></span>
+`;
+        };
 
-let AllProducts =[];
 
 productList.addEventListener(`click`, e => {
  if(e.target.classList.contains(`btn-add-cart`)){
@@ -189,297 +190,102 @@ productList.addEventListener(`click`, e => {
         cantidad: 1,
         nombre: item.querySelector(`h5`).textContent,
         precio: item.querySelector(`span`).textContent,
+    };
+
+    const duplicate = AllProducts.some(item => item.nombre ===infocarrito.nombre);
+
+
+    if(duplicate){
+        const products =AllProducts.map(item => {
+            if(item.nombre ===infocarrito.nombre){
+                item.cantidad++;
+                return item;
+            }else{
+                return item;
+            }
+        });
+       AllProducts=[...products];
+    }else{
+        AllProducts=[...AllProducts,infocarrito];
     }
-    AllProducts=[...AllProducts,infocarrito];
+    ContainerCarrito.innerHTML="";
     ShowHTML();
+    
+    
  }
 }
 )
 
-const ContainerCarrito = document.querySelector(`.row-product`);
+rowProduct.addEventListener('click',e =>{
+    if(e.target.classList.contains('icon-close')){
+        const item = e.target.parentElement;
+        const title = item.querySelector('p').textContent;
+        AllProducts=AllProducts.filter(el=>
+            el.nombre !== title);
+
+            console.log(AllProducts);
+            ShowHTML();
+    }
+});
+
+
+
+
+
+
+
+
+
+
 const ShowHTML = () => {
-    AllProducts.forEach(e => {
-        ContainerCarrito.innerHTML =  ContainerCarrito.innerHTML + `
-        <div class="cart-product">
-                                    <div class="info-cart-product">
-                                        <span class="cantidad-producto-carrito">${e.cantidad}</span>
-                                        <p class="titulo-producto-carrito">${e.nombre}</p>
-                                        <span class="precio-producto-carrito">${e.precio}</span>
-                                    </div>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="icon-close"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                </div>
-        `
-
-
-})}
-
-
-
-
-
-
-
-
-
-
-
-// // FUNCIONES 
-
-// function NuevoCliente(cliente, array) {
-//     for (const el of array) {
-//         if (el.nombreapellido == nombre && el.numero == numero && el.direccion == direccion && el.distrito == distrito) {
-//             j++;
-//         }
-//         // SE VALIDA DUPLICADO DE CLIENTES
-//     }
-//     if (j == 1) {
-//         clientes.push(new Cliente(nombre, numero, direccion, distrito, 0));
-//         alert("Felicitaciones!!" + "\n" + "Esta es tu primera compra, tienes un cupon de $20.00");
-//         descuento = 20;
-//         return true
-//     }
-// }
-
-// function FechaEntrega() {
-//     TiempoEntrega = Math.round(40 + 3 * (Math.random() * 12 - 6)); //TIEMPO ALEATORIO CON DISTR. ESTADISTICA NORMAL(40,3) MINUTOS
-//     llegada = new Date()
-//     if ((llegada.getMinutes() + TiempoEntrega) > 60) {
-//         return (llegada.getHours() + 1) + ":" + (llegada.getMinutes() + TiempoEntrega - 60).toString().padStart(2, '0');
-//     } else {
-//         return llegada.getHours() + ":" + (llegada.getMinutes() + TiempoEntrega);
-//     }
-// }
-
-// function DesarrolloTexto(item) {
-//     TextoLista = ""
-//     switch (item) {
-//         case ConfirmacionDatos:
-//             nombre = prompt("Ingresar su Nombre");
-//             numero = prompt("Ingresar su Numero");
-//             direccion = prompt("Ingresar su Dirección");
-//             distrito = prompt("Ingresar su Distrito");
-//             cliente = { nombre: nombre, numero: numero, direccion: direccion, distrito: distrito };
-//             TextoLista = `Sus datos son correctos?\nNombre: ${cliente.nombre}\nNumero: ${cliente.numero}\nDireccion: ${cliente.direccion}\nDistrito: ${cliente.distrito}\nSi la respuesta es 'SI' Coloque 'Aceptar'`;
-//             ConfirmacionDatos = confirm(TextoLista);
-//             break;
-//         case ListaCategoria:
-//             TextoLista = "Tenemos las siguiente categorias:" + "\n" +
-//                 "1: Ron" + "\n" +
-//                 "2: Whisky" + "\n" +
-//                 "3: Pisco" + "\n" +
-//                 "4: Vino" + "\n" +
-//                 "5: Gin" + "\n" +
-//                 "6: Bebidas" + "\n" +
-//                 "7: Todos los productos" + "\n"
-//             categoria = +prompt(TextoLista);
-//             break;
-//         case carrito:
-//             for (const el of carrito) {
-//                 if (el.producto.contenido >= 1000) {
-//                     TextoLista = TextoLista + `|Producto: ${el.producto.marca} ${(el.producto.contenido / 1000).toFixed(2)}Lt |Cantidad: ${el.cantidad}|Subtotal: $ ${(el.producto.precio * el.cantidad).toFixed(2)} \n`;
-//                 } else {
-//                     TextoLista = TextoLista + `|Producto: ${el.producto.marca} ${el.producto.contenido}ml |Cantidad: ${el.cantidad} |Subtotal: $ ${(el.producto.precio * el.cantidad).toFixed(2)} \n`;
-//                 }
-//             }
-//             break;
-//         case MediosDePago:
-//             if (MediosDePago == 1) {
-//                 TextoMedios = " darle cambio.";
-//                 TextoCambio = +prompt("Con cuanto efectivo cancela?");
-//                 ValidadorDatos(TextoCambio);
-//             } else if (MediosDePago == 2) {
-//                 TextoMedios = " cargar POS.";
-//             } else {
-//                 TextoMedios = " darle cambio y cargue POS.";
-//                 TextoCambio = +prompt("Con cuanto efectivo cancela?");
-//                 ValidadorDatos(TextoCambio);
-//             }
+    if(AllProducts.length==0){
+        CartTotal.innerHTML=`
+    <h3>El carrito esta vacio</h3>
+`;
+countProducts.innerText =0;
+ContainerCarrito.innerHTML=``;
+           }else{
+            let total = 0;
+            let TotalCantidad = 0;
+            ContainerCarrito.innerHTML=``;
             
-//             TextoLista = "Le avisaremos al repartidor para" + TextoMedios + `\nHora de Llegada: ${FechaEntrega()}. \nRecuerda estar pediente de tu celular. \nCuando llegue el Repartidor, te llamará. \n\n Gracias por su compra! Estamos a tu servicio 24 horas`;
-//             alert(TextoLista);
-//             break;
-//     }
-// }
-
-// function ValidadorDatos(item, array) {
-//     switch (item) {
-//         case PermisoDatos:
-//             while (PermisoDatos == false) {
-//                 PermisoDatos = confirm("Por favor colocar la opción 'Aceptar' para cotinuar con la compra");
-//             }
-//             break;
-//         case ConfirmacionDatos:
-//             while (ConfirmacionDatos == false) {
-//                 alert("Por favor ingrese nuevamente sus datos");
-//                 DesarrolloTexto(ConfirmacionDatos);
-//             }
-//             break;
-//         case ListaCategoria:
-//             while (categoria > 7 || isNaN(categoria) || categoria <= 0 || categoria % 1 != 0) {
-//                 alert(`Ingrese la categoria adecuada \n *Ingresar un numero entero del 1 al 7`);
-//                 DesarrolloTexto(ListaCategoria);
-//             }
-//             break;
-//         case MediosDePago:
-//             while (isNaN(MediosDePago)  || MediosDePago <=0 || MediosDePago % 1 != 0 || MediosDePago > 3) {
-//                 alert("Ingrese una opción valida")
-//                 MediosDePago = +prompt("Medios de pago: " + "\n" +
-//                     "Opcion 1: Efectivo" + "\n" +
-//                     "Opcion 2: Transferencia" + "\n" +
-//                     "Opcion 3: Ambos");
-//             }
-//             break;
-//         case productoConsulta:
-//             while (productoConsulta > array.length || isNaN(productoConsulta) || productoConsulta <= 0 || productoConsulta % 1 != 0) {
-//                 alert(`Ingrese la cantidad adecuada \n *Ingresar un numero entero del 1 al ${array.length}`);
-//                 productoConsulta = parseInt(prompt(`${TextoLista} Que producto desea? \n *Elegir un producto según su número`));
-//             }
-//             break;
-//         case cantidad:
-//             while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 != 0 || array[productoConsulta - 1].validacionstock(cantidad) == true) {
-//                 cantidad = parseInt(prompt(`Ingrese la cantidad \n *Ingresar un numero entero del 1 al ${array[productoConsulta - 1].stock}`));
-//             }
-//             break;
-//         case TextoCambio:
-//             while (isNaN(TextoCambio) || TextoCambio <= 0 ) {
-//                 TextoCambio = +prompt("Con cuanto efectivo cancela?");
-//              }
-//             break;
-//     }
-// }
-
-
-// // FUNCIONES DE ORDER SUPERIOR -- FILTRO DE PRODUCTOS
-
-// function EleccionDeProducto(array) {
-//     TextoLista = "";
-//     j = 1;
-//     for (const el of array) {
-//         if (el.contenido >= 1000) {
-//             TextoLista = TextoLista + `${j}: ${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt \n`;
-//             j++;
-//         } else {
-//             TextoLista = TextoLista + `${j}: ${el.nombre} ${el.marca} ${el.contenido}ml \n`;
-//             j++;
-//         }
-//     }
-
-//     productoConsulta = +prompt(`${TextoLista} Que producto desea? \n *Elegir un producto según su número`);
-//     ValidadorDatos(productoConsulta, array);
-
-//     if (array[productoConsulta - 1].contenido >= 1000) {
-//         alert(`El precio del ${array[productoConsulta - 1].nombre} ${array[productoConsulta - 1].marca} ${(array[productoConsulta - 1].contenido / 1000).toFixed(2)}Lt es de ${array[productoConsulta - 1].precio}`);
-//     } else {
-//         alert(`El precio del ${array[productoConsulta - 1].nombre} ${array[productoConsulta - 1].marca} ${array[productoConsulta - 1].contenido}ml es de ${array[productoConsulta - 1].precio}`);
-//     }
-//     console.log(array[productoConsulta - 1]);
-//     cantidad = +prompt("Ingrese la cantidad");
-
-//     // SE VALIDA NO EXCEDERSE DEL STOCK
-//     array[productoConsulta - 1].validacionstock(cantidad);
-//     ValidadorDatos(cantidad, array);
-
-//     // SE VALIDA ACTUALIZACION DEL STOCK DEL PRODUCTO
-
-//     array[productoConsulta - 1].compra(cantidad);
-//     console.log(array[productoConsulta - 1]);
-
-
-//     carrito.push(new Item(array[productoConsulta - 1], cantidad));
-//     // SE VALIDA PROMOCION POR CANTIDAD DEL PRODUCTO
-//     promocion = carrito[carrito.length - 1].promociones(cantidad);
-//     console.log(promocion);
-
-
-
-//     if (NuevoCliente(cliente, clientes) == true) {
-//         descuento = descuento + array[productoConsulta - 1].precio * cantidad * (1 - promocion) + 20;
-//     } else {
-//         descuento = descuento + array[productoConsulta - 1].precio * cantidad * (1 - promocion);
-//     }
-//     suma = suma + array[productoConsulta - 1].precio * cantidad - descuento;
-// }
-
-// function FiltroProducto(categoria) {
-//     switch (categoria) {
-//         case 1:
-//             EleccionDeProducto(ProductoRon);
-//             break;
-//         case 2:
-//             EleccionDeProducto(ProductoWhisky);
-//             break;
-//         case 3:
-//             EleccionDeProducto(ProductoPisco);
-//             break;
-//         case 4:
-//             EleccionDeProducto(ProductoVino);
-//             break;
-//         case 5:
-//             EleccionDeProducto(ProductoGin);
-//             break;
-//         case 6:
-//             EleccionDeProducto(ProductoBebidas);
-//             break;
-//         case 7:
-//             EleccionDeProducto(productos);
-//             break;
-//     }
-// }
-
-
-
-// //BIENVENIDA
-// PermisoDatos = confirm("Hola! Bienvenido ALL DAY/ ALL NIGHT" + "\n" +
-//     "Queremos darte un excelente servicio" + "\n" +
-//     "Para llevarte tu pedido lo más rapido" + "\n" +
-//     "Necesitamos tu datos");
-// ValidadorDatos(PermisoDatos);
-
-// // INGRESO DE DATOS
-// DesarrolloTexto(ConfirmacionDatos);
-// ValidadorDatos(ConfirmacionDatos);
-// alert("Gracias, los datos se ingresaron exitosamente");
-// // SE VALIDA SI ES NUEVO CLIENTE
-// NuevoCliente(cliente, clientes);
-
-// // ELECCION DE PRODUCTOS
-// do {
-//     DesarrolloTexto(ListaCategoria);
-//     ValidadorDatos(ListaCategoria);
-//     FiltroProducto(categoria);
-//     OtroProducto = confirm("Desea llevar otro producto?  Si la respuesta es 'SI' Coloque 'Aceptar'")
-
-// } while (OtroProducto == true);
-
-// // FACTURA DEL PEDIDO
-// // SE VALIDA ACTUALIZACION DE HISTORIAL DEL CLIENTE
-// clientes[clientes.length - 1].RefreshHistorial(1)
-// console.log(clientes[clientes.length - 1]);
-
-// DesarrolloTexto(carrito);
-// alert(`FACTURA DEL PEDIDO \n${TextoLista} \n|Descuento: $ ${descuento.toFixed(2)} \n|Total: $ ${suma.toFixed(2)}`);
-
-// // ELECCION MEDIO DE PAGO
-// MediosDePago = +prompt("Medios de pago: " + "\n" +
-//     "Opcion 1: Efectivo" + "\n" +
-//     "Opcion 2: Transferencia" + "\n" +
-//     "Opcion 3: Ambos");
-// ValidadorDatos(MediosDePago);
-// DesarrolloTexto(MediosDePago);
-
-
-
+            
+            AllProducts.forEach(e => {
+                ContainerCarrito.innerHTML =  ContainerCarrito.innerHTML +`
+                <div class="cart__product">
+                                            <div class="info-cart-product">
+                                                <span class="cantidad-producto-carrito">${e.cantidad}</span>
+                                                <p class="titulo-producto-carrito">${e.nombre}</p>
+                                                <span class="precio-producto-carrito">${e.precio}</span>
+                                            </div>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="icon-close"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12"
+                                                />
+                                            </svg>
+                                        </div>
+                `;
+                total = total+parseInt(e.precio.slice(1)*e.cantidad);
+                TotalCantidad = TotalCantidad + e.cantidad;
+        
+        
+        })
+        CartTotal.innerHTML=`
+        <h3>Total:</h3>
+        <span class="total-pagar">$${total.toFixed(2)}</span>
+        <button id="btn-add-cart" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="./PAGES/Pago.html">Pagar</a></button>
+        `;
+        // ValorTotal.innerText= `$${total.toFixed(2)}`;
+        countProducts.innerText = TotalCantidad;
+           };
+}
 

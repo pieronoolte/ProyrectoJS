@@ -21,7 +21,7 @@
         <div class="header__container">
             <h1 class="header__title">ALL DAY/ ALL NIGHT</h1>
         </div>
-        
+    </header>
         <!-- Fin de la Cabecera -->
         <!-- Inicio de Navegación -->
         <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
@@ -66,53 +66,43 @@
                         </li>
                     </ul>
                 </div>
-                <div class="container-icon">
-                    <div class="container-cart-icon">
+                <!-- container-icon => nav__cart -->
+                <div class="nav__cart">
+                    <!--  container-cart-icon => cart__icon-->
+                    <div class="cart__icon">
                     <button type="button" class="btn btn-outline-secondary mx-5"><span class="material-symbols-outlined">
                         shopping_cart
                         </span></button>
-                        <div class="count-products">
-                            <span id="contador-productos">0</span>
+                        <!--  count-products  => cart__count-->
+                        <div class="cart__count">
+                            <!--  contador-productos  => cart__countproducts-->
+                            <span id="cart__countproducts">0</span>
                         </div>
                     </div>
-                        <div class="container-cart-products hidden-cart">
-                            <div class="row-product">
-                                <div class="cart-product">
-                                    <div class="info-cart-product">
-                                        <span class="cantidad-producto-carrito">1</span>
-                                        <p class="titulo-producto-carrito">Zapatos Nike</p>
-                                        <span class="precio-producto-carrito">$80</span>
-                                    </div>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
-                                        class="icon-close"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
+                    <!--  container-cart-products  => cart__content-->
+                     <!--  hidden-cart  => cart__content--hidden-->
+                        <div class="cart__content cart__content--hidden">
+                            <!--  row-product  => cart__list-->
+                            <div class="cart__list">
+                                <!--  container-cart-products  => cart__product-->
+                                <div class="cart__product">
+                
                                 </div>
                             </div>
-                            
-                            <div class="cart-total">
-                                <h3>Total:</h3>
-                                <span class="total-pagar">$200</span>
+                            <!--  cart-total  => cart__total-->
+                            <div class="cart__total">  
                             </div>
                         </div>
-                   
                 </div>
             </div>
         </nav>
         <!-- Fin de Navegación -->
-    </header>
+    
     <main>
-        <div id="productos"></div>
+        <!-- Inicio Lista de productos -->
+        <!-- productos => main__listproducts -->
+        <div id="main__listproducts"></div>
+        <!-- Fin Lista de productos -->
         
     </main>
 

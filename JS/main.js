@@ -25,6 +25,7 @@ let Cart = [];
 productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
 productos.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
 productos.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
+
 productos.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
 productos.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
 productos.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));

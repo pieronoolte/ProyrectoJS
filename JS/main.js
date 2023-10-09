@@ -172,6 +172,13 @@ productList.addEventListener(`click`, e => {
                 NewItem = new Item(el, InfoCart.cantidad);
             }
         })
+
+        ProductosPromociones.forEach((el) => {
+            Textolista(el);
+            if (InfoCart.nombre == TextoLista) {
+                NewItem = new Item(el, InfoCart.cantidad);
+            }
+        })
         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
 
 

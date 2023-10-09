@@ -220,6 +220,12 @@ productList.addEventListener(`click`, e => {
 }
 )
 
+function Textolista2(el) {
+    (el.contenido >= 1000)
+            ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
+            : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
+            return TextoLista;
+        }
 
 // EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
 rowProduct.addEventListener('click', e => {
@@ -228,6 +234,8 @@ rowProduct.addEventListener('click', e => {
         const title = item.querySelector('p').textContent;
         AllProducts = AllProducts.filter(el =>
             el.nombre !== title);
+        Cart= Cart.filter(el =>
+            Textolista2(el.producto) !== title);
         console.log(AllProducts);
         ShowCart();
     }

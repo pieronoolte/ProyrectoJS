@@ -109,8 +109,9 @@ const ShowCart = () => {
         <span class="total-pagar">$${Total.toFixed(2)}</span>
         <button id="btn-add-cart" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="./PAGES/Pago.html">Pagar</a></button>
         `;
-
+        sessionStorage.clear();
         countProducts.innerText = TotalCantidad;
+        sessionStorage.setItem("Cart", JSON.stringify(Cart));
     };
 }
 
@@ -208,14 +209,14 @@ productList.addEventListener(`click`, e => {
             AllProducts = [...AllProducts, InfoCart];
             Cart = [...Cart, NewItem];
         }
-        sessionStorage.clear();
+        
         console.log(Cart);
         console.log(AllProducts);
         ContainerCarrito.innerHTML = "";
         ShowCart();
         
     }
-    sessionStorage.setItem("Cart", JSON.stringify(Cart));
+    
 }
 )
 
@@ -227,7 +228,6 @@ rowProduct.addEventListener('click', e => {
         const title = item.querySelector('p').textContent;
         AllProducts = AllProducts.filter(el =>
             el.nombre !== title);
-
         console.log(AllProducts);
         ShowCart();
     }

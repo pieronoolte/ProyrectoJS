@@ -9,6 +9,7 @@ const ContainerCarrito = document.querySelector(`.cart__list`);
 let productoscard = document.querySelector(`#main__listproducts`);
 let countProducts = document.querySelector(`#cart__countproducts`);
 
+
 // VARIABLES GENERALES
 let TextoLista="";
 
@@ -224,3 +225,4 @@ rowProduct.addEventListener('click', e => {
         ShowCart();
     }
 });
+

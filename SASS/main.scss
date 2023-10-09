@@ -34,9 +34,10 @@
 }
 
 @keyframes Letrero {
-    from{
+    from {
         margin-left: -100%;
     }
+
     to {
         margin-left: 100%;
     }
@@ -82,16 +83,17 @@ body {
 
 }
 
-#nav__label{
-    background: #000000ab ;
+#nav__label {
+    background: #000000ab;
     border-radius: 8%;
     width: 175px;
     overflow: hidden;
     border: 1px solid #6c757d;
     box-shadow: inset 0 0 5px white, 0 0 10px white;
     animation: ParpadearBox 4s infinite backwards;
-    a{
-        color:  white;
+
+    a {
+        color: white;
         margin: 0 auto;
         text-shadow: 0 0 5px white, 0 0 15px white, 0 0 30px white, 0 0 50px white;
         animation: Letrero 4s infinite backwards;
@@ -120,7 +122,8 @@ body {
     #cart__countproducts {
         font-size: 15px;
     }
-    
+
+
     .cart__content {
         position: absolute;
         top: 50px;
@@ -131,69 +134,110 @@ body {
         z-index: 1;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
         border-radius: 10px;
-
-        .cart__product {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px;
-
-            border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-
-            .cartproduct__info {
-                display: flex;
-                justify-content: space-between;
-                flex: 0.8;
-            }
-            
-            .cartproduct__quantity {
-                font-weight: 400;
-                font-size: 18px;
-            }
-            
-            .cartproduct__title {
-                font-size: 15px;
-                margin-left: 4%;
-                text-align: start;
-            }
-            
-            .cartproduct__price {
-                font-weight: 700;
-                font-size: 18px;
-                margin-left: 10px;
-            }
-            
-            .cartproduct__icon {
-                width: 25px;
-                height: 25px;
-                &:hover {
-                    stroke: red;
-                    cursor: pointer;
-                }
-            }
-
-        }
     }
 
-    .cart__content--hidden {
-        display: none;
-    }
+}
 
-    .cart__total {
+.cart__product {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+
+    .cartproduct__info {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 0;
-        gap: 20px;
+        justify-content: space-between;
+        flex: 0.8;
+    }
 
-        h3 {
-            font-size: 20px;
-            font-weight: 700;
-        }
+    .cartproduct__quantity {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .cartproduct__title {
+        font-size: 15px;
+        margin-left: 4%;
+        text-align: start;
+        width: 200px;
+    }
+
+    .cartproduct__price {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 5%;
+    }
+
+    .cartproduct__sub {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 10%;
+    }
+
+
+}
+
+
+.cartproduct__quantity--title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: -7%;
+}
+
+.cartproduct__title--title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 5%;
+
+}
+
+.cartproduct__price--title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 23%;
+    margin-right: -5%;
+}
+
+.cartproduct__sub--title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 15%;
+    margin-right: -2%;
+}
+
+.cartproduct__icon {
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+        stroke: red;
+        cursor: pointer;
     }
 }
 
-// ESTILOS MAIN
+.cart__content--hidden {
+    display: none;
+}
+
+.cart__total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+//ESTILOS MAIN
 #main__listproducts {
     @include dflex(space-between, 1%, 1%, 1%, 1%);
 
@@ -251,4 +295,32 @@ body {
     }
 
 
+}
+
+// ESTILOS PAGE PAGO
+#main__factura {
+    background: white;
+    color: #6c757d;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10%;
+
+    .cartproduct__firstrow {
+        font-weight: 700;
+        font-size: 22px;
+        margin-left: 10px;
+    }
+
+    .cart__list--Factura {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
 }

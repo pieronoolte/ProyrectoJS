@@ -96,6 +96,8 @@ const ShowCart = () => {
                         <p class="cartproduct__title">${e.nombre}</p>
                         <span class="cartproduct__price">${e.precio}</span>
                     </div>
+
+                    
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

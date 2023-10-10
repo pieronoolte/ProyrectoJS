@@ -62,8 +62,8 @@ const ShowCart = () => {
 
 }
 
-
-document.addEventListener('DOMContentLoaded', () => { ShowCart()});
+ShowCart()
+// document.addEventListener('DOMContentLoaded', () => { ShowCart()});
 
 const toastTrigger = document.getElementById('liveToastBtn')
 const toastLiveExample = document.getElementById('liveToast')

@@ -2,6 +2,8 @@
 // VARIABLES DOM
 let FacturatList = document.querySelector(`.cart__list`);
 const CartTotal = document.querySelector(`.cart__total--Factura`);
+const MainPaymentForm = document.querySelector(`#main__paymentform`);
+
 
 // VARIABLES GENERALES
 let TextoLista = "";
@@ -59,7 +61,26 @@ const ShowCart = () => {
           `;
 
 }
-ShowCart();
 
 
-// document.addEventListener('DOMContentLoaded', () => { ListaProductos(productos, 0) });
+document.addEventListener('DOMContentLoaded', () => { ShowCart()});
+
+const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+}
+
+const toastTriggertwo = document.getElementById('liveToastBtnTwo')
+const toastLiveExampletwo = document.getElementById('liveToastTwo')
+
+if (toastTriggertwo) {
+  const toastBootstraptwo = bootstrap.Toast.getOrCreateInstance(toastLiveExampletwo)
+  toastTriggertwo.addEventListener('click', () => {
+    toastBootstraptwo.show()
+  })
+}

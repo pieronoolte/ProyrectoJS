@@ -182,7 +182,6 @@ body {
 
 }
 
-
 .cartproduct__quantity--title {
     font-weight: 700;
     font-size: 18px;
@@ -265,14 +264,12 @@ body {
 
 }
 
-.filtro {
+.card__filtro {
     display: none;
 }
 
 
-// NUEVO PLAN PILOTO
-
-.total-pagar {
+.pay__total {
     font-size: 20px;
     font-weight: 900;
 }
@@ -284,7 +281,7 @@ body {
     text-align: center;
 }
 
-#btn-add-cart {
+#pay__btn {
     a {
         text-decoration: none;
         color: #6c757d;
@@ -298,12 +295,17 @@ body {
 }
 
 // ESTILOS PAGE PAGO
+
+#main__paymentform{
+    padding: 30px;
+}
 #main__factura {
     background: white;
     color: #6c757d;
     max-width: 800px;
     margin: 0 auto;
     border-radius: 10%;
+    margin-top: 5%;
 
     .cartproduct__firstrow {
         font-weight: 700;
@@ -322,5 +324,115 @@ body {
             font-size: 20px;
             font-weight: 700;
         }
+    }
+}
+
+
+#main__form {
+    background: white;
+    color: #6c757d;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 5%;
+    margin-bottom: 5%;
+    padding: 20px;
+}
+
+#main__pay {
+    background: white;
+    color: #6c757d;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 5%;
+    margin-top: 5%;
+    padding: 20px;
+    padding-top: 10px;
+}
+
+.main__buttons {
+    display: flex;
+    justify-content: end;
+}
+
+.main__buttons--cliente {
+    display: flex;
+    justify-content: end;
+    margin-top: 3%;
+}
+
+#btn-add-cart--form {
+    a {
+        text-decoration: none;
+        color: #6c757d;
+    }
+
+    &:hover a {
+        color: white;
+    }
+
+
+}
+
+// check csss import
+.wrapper {
+    height: 50px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #6c757d;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #6c757d;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 1px 4px  #6c757d;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px  inherit;
     }
 }

@@ -12,6 +12,7 @@ let countProducts = document.querySelector(`#cart__countproducts`);
 
 // VARIABLES GENERALES
 let TextoLista="";
+let NewItem = {};
 
 //ARRAYS
 let productos = [];
@@ -19,7 +20,7 @@ let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
 
-// BASE DE DATOS DE PRODUCTOS LOCALSOTRAG
+// BASE DE DATOS DE PRODUCTOS LOCALSTORAGE
 productos = JSON.parse(localStorage.getItem("Productos"));
 ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
 
@@ -38,8 +39,17 @@ function Textolista(el) {
     (el.contenido >= 1000)
             ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
             : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
+            return TextoLista
         }
-
+// FUNCION NUEVO ITEM
+function ItemNew(array,object){
+    
+    array.forEach((el) => {   
+        if (object.nombre == Textolista(el)) {
+            NewItem = new Item(el, object.cantidad);
+        }
+    })
+}
 // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
 function ListaProductos(array, j) {
     productoscard.innerHTML = "";
@@ -106,9 +116,10 @@ const ShowCart = () => {
 
         CartTotal.innerHTML = `
         <h3>Total:</h3>
-        <span class="total-pagar">$${Total.toFixed(2)}</span>
-        <button id="btn-add-cart" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="./PAGES/Pago.html">Pagar</a></button>
+        <span class="pay__total">$${Total.toFixed(2)}</span>
+        <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="./PAGES/pago.html">Pagar</a></button>
         `;
+
         sessionStorage.clear();
         countProducts.innerText = TotalCantidad;
         sessionStorage.setItem("Cart", JSON.stringify(Cart));
@@ -144,8 +155,8 @@ document.addEventListener('keyup', e => {
     if (e.target.matches(`#nav__search`)) {
         document.querySelectorAll(`.productos__card`).forEach((el) => {
             el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-                ? el.classList.remove("filtro")
-                : el.classList.add("filtro")
+                ? el.classList.remove("card__filtro")
+                : el.classList.add("card__filtro")
         })
     }
 })
@@ -159,29 +170,17 @@ BtnCart.addEventListener('click', () => {
 productList.addEventListener(`click`, e => {
 
     if (e.target.classList.contains(`btn-add-cart`)) {
-        let NewItem = {};
         const item = e.target.parentElement;
         const InfoCart = {
             cantidad: 1,
             nombre: item.querySelector(`h5`).textContent,
             precio: item.querySelector(`span`).textContent,
         };
+        
+        ItemNew(productos,InfoCart);
+        ItemNew(ProductosPromociones,InfoCart);
 
-        productos.forEach((el) => {
-            Textolista(el);
-            if (InfoCart.nombre == TextoLista) {
-                NewItem = new Item(el, InfoCart.cantidad);
-            }
-        })
-
-        ProductosPromociones.forEach((el) => {
-            Textolista(el);
-            if (InfoCart.nombre == TextoLista) {
-                NewItem = new Item(el, InfoCart.cantidad);
-            }
-        })
         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
-
 
         if (Duplicate) {
             const products = AllProducts.map(item => {
@@ -194,7 +193,7 @@ productList.addEventListener(`click`, e => {
             });
             AllProducts = [...products];
 
-            const items = Cart.map(el => {
+            const RefreshItem = Cart.map(el => {
                 Textolista(el.producto);
                 if (TextoLista === InfoCart.nombre) {
                     el.cantidad++;
@@ -203,7 +202,7 @@ productList.addEventListener(`click`, e => {
                     return el;
                 }
             });
-            Cart = [...items];
+            Cart = [...RefreshItem];
 
         } else {
             AllProducts = [...AllProducts, InfoCart];
@@ -213,19 +212,11 @@ productList.addEventListener(`click`, e => {
         console.log(Cart);
         console.log(AllProducts);
         ContainerCarrito.innerHTML = "";
-        ShowCart();
-        
-    }
-    
+        ShowCart();   
+    }  
 }
 )
 
-function Textolista2(el) {
-    (el.contenido >= 1000)
-            ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
-            : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
-            return TextoLista;
-        }
 
 // EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
 rowProduct.addEventListener('click', e => {
@@ -235,7 +226,7 @@ rowProduct.addEventListener('click', e => {
         AllProducts = AllProducts.filter(el =>
             el.nombre !== title);
         Cart= Cart.filter(el =>
-            Textolista2(el.producto) !== title);
+            Textolista(el.producto) !== title);
         console.log(AllProducts);
         ShowCart();
     }

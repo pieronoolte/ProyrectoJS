@@ -22,8 +22,8 @@ let Cart = [];
 let ProductosJSOn = [];
 
 // FUNCION FETCH PARA BASE DE DATOS
-function GetProductos (ArchivoJSON){
-    fetch(ArchivoJSON)
+
+    fetch('./productos.json')
     .then((response) => {
         if(response.ok){
             return response.json();
@@ -31,11 +31,11 @@ function GetProductos (ArchivoJSON){
             
     })
     .then((elements) => {
-        productos = elements
+        productos = elements;
         console.log("hola");
     })
-}
-GetProductos('/productos.json')
+
+
 // document.addEventListener('DOMContentLoaded', () => { GetProductos('/productos.json')});
 // productos = JSON.parse(localStorage.getItem("Productos"));
 // ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));

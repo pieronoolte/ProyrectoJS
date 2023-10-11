@@ -32,13 +32,11 @@ function GetProductos (ArchivoJSON){
     })
     .then((elements) => {
         productos = elements
-        ListaProductos(productos, 0);
-        console.log(productos);
-
+        // ListaProductos(productos, 0);
     })
 }
 
-document.addEventListener('DOMContentLoaded', () => { GetProductos('./productos.json')});
+// document.addEventListener('DOMContentLoaded', () => { GetProductos('./productos.json')});
 // productos = JSON.parse(localStorage.getItem("Productos"));
 // ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
 

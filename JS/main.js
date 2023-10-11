@@ -97,7 +97,7 @@ const ShowCart = () => {
                         <span class="cartproduct__price">${e.precio}</span>
                     </div>
 
-                    
+
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -118,8 +118,8 @@ const ShowCart = () => {
 
         CartTotal.innerHTML = `
         <h3>Total:</h3>
-        <span class="pay__total">$${Total.toFixed(2)}</span>
-        <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="./PAGES/pago.html">Pagar</a></button>
+        <span class="pay__total">$${Total.toFixed(2)}</span>"
+        <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
         `;
 
         sessionStorage.clear();

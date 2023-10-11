@@ -22,7 +22,12 @@ let Cart = [];
 let ProductosJSOn = [];
 
 // FUNCION FETCH PARA BASE DE DATOS
-
+const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  
     fetch('productos.json')
     .then(response => response.json())
     .then((elements) => {

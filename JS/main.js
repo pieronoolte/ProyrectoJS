@@ -14,27 +14,10 @@ let TextoLista = "";
 let NewItem = {};
 
 //ARRAYS
-// let productos = [];
+let productos = [];
 let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
-
-
-// function TraerDatos (){
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.open('GET','/productos.json', true);
-//     xhttp.send();
-//     xhttp.onreadystatechange = function(){
-//         if(this.readyState ==4 && this.status==200){
-//             console.log(this.responseText);
-//             productos = JSON.parse(this.responseText);
-//             console.log(productos);
-//         }
-//     }
-// }
-// let producto = function(productos){
-//     console.log(productos)
-// };
 
 
 // document.addEventListener('DOMContentLoaded', () => {TraerDatos() });
@@ -44,8 +27,8 @@ let Cart = [];
 
 
 // FUNCION FETCH PARA BASE DE DATOS
-
-fetch("JSON/productos.json")
+function TraerDatos(){
+    fetch("JSON/productos.json")
   .then((response) =>{
     if(response.ok){
         return response.json();
@@ -53,9 +36,11 @@ fetch("JSON/productos.json")
     console.log("Hola");
   })
   .then((lista) => {
-    console.log(lista);
-    
+    producto=lista;
   })
+}
+
+TraerDatos();
 
 
 

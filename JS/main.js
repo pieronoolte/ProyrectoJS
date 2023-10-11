@@ -22,8 +22,8 @@ let Cart = [];
 let ProductosJSOn = [];
 
 // BASE DE DATOS DE PRODUCTOS LOCALSTORAGE
-
-fetch('./productos.json')
+function GetProductos (){
+    fetch('./productos.json')
     .then((response) => {
         if (response.ok) {
             return response.json();
@@ -31,8 +31,10 @@ fetch('./productos.json')
     })
     .then((productos) => {
         ProductosJSOn = productos;
-
+        ListaProductos(productos, 0)
     })
+}
+
 
 
 productos = JSON.parse(localStorage.getItem("Productos"));
@@ -46,7 +48,7 @@ let ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
 let ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
 let ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo" });
 
-document.addEventListener('DOMContentLoaded', () => { ListaProductos(productos, 0) });
+document.addEventListener('DOMContentLoaded', () => { GetProductos()});
 
 // FUNCION TEXTOLISTA
 function Textolista(el) {

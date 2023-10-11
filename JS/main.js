@@ -25,10 +25,11 @@ let ProductosJSOn = [];
 
 fetch('./productos.json')
   .then((response) =>{
-    if(!response.ok){
+    if(response.ok){
         return response.json();
     }
     console.log("Hola");
+    console.log(response.ok);
   })
   .then((lista) => {
     productos = lista

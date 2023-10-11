@@ -23,19 +23,19 @@ let ProductosJSOn = [];
 
 // BASE DE DATOS DE PRODUCTOS LOCALSTORAGE
 function GetProductos (){
-    fetch('./productos.json')
+    fetch("./productos.json")
     .then((response) => {
-        if (response.ok) {
             return response.json();
-        }
     })
     .then((elements) => {
         productos = elements;
-        ListaProductos(productos, 0)
+        ListaProductos(productos, 0);
+        console.log(productos);
+
     })
 }
 
-
+document.addEventListener('DOMContentLoaded', () => { GetProductos()});
 
 productos = JSON.parse(localStorage.getItem("Productos"));
 ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
@@ -48,7 +48,7 @@ let ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
 let ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
 let ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo" });
 
-document.addEventListener('DOMContentLoaded', () => { GetProductos()});
+
 
 // FUNCION TEXTOLISTA
 function Textolista(el) {

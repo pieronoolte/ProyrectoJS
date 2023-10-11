@@ -24,15 +24,10 @@ let ProductosJSOn = [];
 // FUNCION FETCH PARA BASE DE DATOS
 
     fetch('productos.json')
-    .then((response) => {
-        
-            return response.json();
-        
-            
-    })
+    .then(response => response.json())
     .then((elements) => {
         productos = elements;
-        console.log("hola");
+        console.log(productos);
     })
 
 

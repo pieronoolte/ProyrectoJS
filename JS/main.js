@@ -23,7 +23,7 @@ let ProductosJSOn = [];
 
 // FUNCION FETCH PARA BASE DE DATOS
 
-fetch('/productos.json', {
+fetch('./productos.json', {
     headers: {
       "Content-Type": "application/json",
     },

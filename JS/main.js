@@ -15,30 +15,32 @@ let TextoLista = "";
 let NewItem = {};
 
 //ARRAYS
-let productos = [];
+// let productos = [];
 let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
-let ProductosJSOn = [];
 
 
 
 
-
+// IMPORTA DATA JSON
+import * as data from 'productos.json';
+let productos = JSON.parse(data);
+console.log(productos); // output 'testing'
 
 
 // FUNCION FETCH PARA BASE DE DATOS
 
-fetch('productos.json')
-  .then((response) =>{
-    if(response.ok){
-        return response.json();
-    }
-    console.log("Hola");
-  })
-  .then((lista) => {
-    console.log(lista);
-  })
+// fetch('productos.json')
+//   .then((response) =>{
+//     if(response.ok){
+//         return response.json();
+//     }
+//     console.log("Hola");
+//   })
+//   .then((lista) => {
+//     console.log(lista);
+//   })
 
 
 // document.addEventListener('DOMContentLoaded', () => { GetProductos('/productos.json')});

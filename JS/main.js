@@ -21,9 +21,9 @@ let AllProducts = [];
 let Cart = [];
 let ProductosJSOn = [];
 
-// BASE DE DATOS DE PRODUCTOS LOCALSTORAGE
-function GetProductos (){
-    fetch("./productos.json")
+// FUNCION FETCH PARA BASE DE DATOS
+function GetProductos (ArchivoJSON){
+    fetch(ArchivoJSON)
     .then((response) => {
             return response.json();
     })
@@ -35,10 +35,10 @@ function GetProductos (){
     })
 }
 
-document.addEventListener('DOMContentLoaded', () => { GetProductos()});
+document.addEventListener('DOMContentLoaded', () => { GetProductos("./productos.json")});
 
-productos = JSON.parse(localStorage.getItem("Productos"));
-ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
+// productos = JSON.parse(localStorage.getItem("Productos"));
+// ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
 
 // BASE DE DATOS DE PRODUCTOS POR FILTRO
 let ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
@@ -156,7 +156,7 @@ const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 // DESGLOSAR PORDUCTOS SEGUN FILTRO
-FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0) });
+FiltroProducto1.addEventListener('click', () => { GetProductos("./productos.json")});
 FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
 FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
 FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
@@ -165,7 +165,7 @@ FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 
 // FILTRO POR NAV PROMOCIONES
-FiltroProducto8.addEventListener('click', () => { ListaProductos(ProductosPromociones, 33) });
+FiltroProducto8.addEventListener('click', () => { GetProductos("./promociones.json") });
 
 // EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {

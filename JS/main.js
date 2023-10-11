@@ -21,15 +21,23 @@ let AllProducts = [];
 let Cart = [];
 let ProductosJSOn = [];
 
+
+
+
+
+
+
 // FUNCION FETCH PARA BASE DE DATOS
 
 fetch('./productos.json')
   .then((response) =>{
+    if(response.ok){
         return response.json();
+    }
+    console.log("Hola");
   })
   .then((lista) => {
-    productos = lista
-    console.log(productos);
+    console.log(lista);
   })
 
 

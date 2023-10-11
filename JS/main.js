@@ -45,7 +45,7 @@ let Cart = [];
 
 // FUNCION FETCH PARA BASE DE DATOS
 
-fetch('../JSON/productos.json')
+fetch('/JSON/productos.json')
   .then((response) =>{
     if(response.ok){
         return response.json();

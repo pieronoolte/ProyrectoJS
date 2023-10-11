@@ -35,7 +35,7 @@ function GetProductos (ArchivoJSON){
     })
 }
 
-document.addEventListener('DOMContentLoaded', () => { GetProductos("./productos.json")});
+document.addEventListener('DOMContentLoaded', () => { GetProductos('./productos.json')});
 
 // productos = JSON.parse(localStorage.getItem("Productos"));
 // ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
@@ -156,7 +156,7 @@ const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 // DESGLOSAR PORDUCTOS SEGUN FILTRO
-FiltroProducto1.addEventListener('click', () => { GetProductos("./productos.json")});
+FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0);});
 FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
 FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
 FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
@@ -165,7 +165,7 @@ FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 
 // FILTRO POR NAV PROMOCIONES
-FiltroProducto8.addEventListener('click', () => { GetProductos("./promociones.json") });
+FiltroProducto8.addEventListener('click', () => { GetProductos('./promociones.json') });
 
 // EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {

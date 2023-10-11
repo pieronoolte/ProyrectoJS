@@ -32,7 +32,7 @@ function GetProductos (ArchivoJSON){
     })
     .then((elements) => {
         productos = elements
-        console.log(productos);
+        console.log("hola");
     })
 }
 GetProductos('/productos.json')

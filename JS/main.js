@@ -25,10 +25,13 @@ let ProductosJSOn = [];
 function GetProductos (ArchivoJSON){
     fetch(ArchivoJSON)
     .then((response) => {
+        if(response.ok){
             return response.json();
+        }
+            
     })
     .then((elements) => {
-        productos = elements;
+        productos = elements
         ListaProductos(productos, 0);
         console.log(productos);
 
@@ -36,7 +39,6 @@ function GetProductos (ArchivoJSON){
 }
 
 document.addEventListener('DOMContentLoaded', () => { GetProductos('./productos.json')});
-
 // productos = JSON.parse(localStorage.getItem("Productos"));
 // ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
 
@@ -165,7 +167,7 @@ FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 
 // FILTRO POR NAV PROMOCIONES
-FiltroProducto8.addEventListener('click', () => { GetProductos('./promociones.json') });
+// FiltroProducto8.addEventListener('click', () => { GetProductos('./promociones.json') });
 
 // EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {

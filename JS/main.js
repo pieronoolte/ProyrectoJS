@@ -54,6 +54,7 @@ fetch("JSON/productos.json")
   })
   .then((lista) => {
     console.log(lista);
+    
   })
 
 

@@ -23,21 +23,22 @@ let ProductosJSOn = [];
 
 // FUNCION FETCH PARA BASE DE DATOS
 
+fetch('/productos.json', {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) =>{
+    if(response.ok){
+        return response.json();
+    }
+  })
+  .then((lista) => {
+    productos = lista
+    console.log(productos);
+  })
 
-async function GetProductos(){
-    const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    
-        fetch('productos.json')
-        .then(response => response.json())
-        .then((elements) => {
-            productos = elements;
-            console.log(productos);
-        })
-}
+
 // document.addEventListener('DOMContentLoaded', () => { GetProductos('/productos.json')});
 // productos = JSON.parse(localStorage.getItem("Productos"));
 // ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));

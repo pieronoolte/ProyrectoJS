@@ -1,0 +1,56 @@
+[
+    {
+        "nombre": "Bebida",
+        "contenido": 500,
+        "marca": "Coca Cola 6unid",
+        "precio": 16
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 3000,
+        "marca": "Coca Cola 2unid",
+        "precio": 19
+    },
+    {
+        "nombre": "Vino",
+        "contenido": 750,
+        "marca": "Tabernero Borgoña 2unid",
+        "precio": 34
+    },
+    {
+        "nombre": "Pisco",
+        "contenido": 750,
+        "marca": "Cuatro Gallos 2unid",
+        "precio": 60
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Black label 2unid",
+        "precio": 128
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Black label + 6unid Pilsen",
+        "precio": 92
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Red label + Schweppes",
+        "precio": 60
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 1500,
+        "marca": "Red bull 6unid",
+        "precio": 28
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 1500,
+        "marca": "Red bull Light 6unid",
+        "precio": 28
+    }
+]

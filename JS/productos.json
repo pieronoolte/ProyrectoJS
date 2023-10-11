@@ -1,0 +1,200 @@
+[
+    {
+        "nombre": "Ron",
+        "contenido": 750,
+        "marca": "El abuelo",
+        "precio": 45
+    },
+    {
+        "nombre": "Ron",
+        "contenido": 750,
+        "marca": "Zacapa 12 años",
+        "precio": 120
+    },
+    {
+        "nombre": "Ron",
+        "contenido": 750,
+        "marca": "Flor de caña",
+        "precio": 52
+    },
+    {
+        "nombre": "Ron",
+        "contenido": 750,
+        "marca": "Zacapa XO",
+        "precio": 130
+    },
+    {
+        "nombre": "Ron",
+        "contenido": 1750,
+        "marca": "Flor de caña",
+        "precio": 65
+    },
+    {
+        "nombre": "Ron",
+        "contenido": 1750,
+        "marca": "Barcelo",
+        "precio": 68
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 1000,
+        "marca": "JW Red label",
+        "precio": 75
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Black label",
+        "precio": 105
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Double Black",
+        "precio": 135
+    },
+    {
+        "nombre": "Whisky",
+        "contenido": 750,
+        "marca": "JW Gold label",
+        "precio": 185
+    },
+    {
+        "nombre": "Pisco",
+        "contenido": 750,
+        "marca": "SQ Quebranta",
+        "precio": 40
+    },
+    {
+        "nombre": "Pisco",
+        "contenido": 2000,
+        "marca": "SQ Quebranta",
+        "precio": 41
+    },
+    {
+        "nombre": "Pisco",
+        "contenido": 750,
+        "marca": "Cuatro Gallos",
+        "precio": 38
+    },
+    {
+        "nombre": "Pisco",
+        "contenido": 750,
+        "marca": "Intipalka",
+        "precio": 42
+    },
+    {
+        "nombre": "Vino",
+        "contenido": 750,
+        "marca": "Tabernero Blanco",
+        "precio": 22
+    },
+    {
+        "nombre": "Vino",
+        "contenido": 750,
+        "marca": "Tabernero Rosé",
+        "precio": 22
+    },
+    {
+        "nombre": "Vino",
+        "contenido": 750,
+        "marca": "Tabernero Malbec",
+        "precio": 24
+    },
+    {
+        "nombre": "Vino",
+        "contenido": 1500,
+        "marca": "Tabernero Borgoña",
+        "precio": 24
+    },
+    {
+        "nombre": "Gin",
+        "contenido": 700,
+        "marca": "Beefeater",
+        "precio": 85
+    },
+    {
+        "nombre": "Gin",
+        "contenido": 700,
+        "marca": "Beefeater pink",
+        "precio": 90
+    },
+    {
+        "nombre": "Gin",
+        "contenido": 700,
+        "marca": "Beefeater orange",
+        "precio": 95
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 375,
+        "marca": "Red Bull",
+        "precio": 6
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 375,
+        "marca": "Red Bull Light",
+        "precio": 6
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 1500,
+        "marca": "Schweppes",
+        "precio": 7
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 1500,
+        "marca": "Schweppes Citrus",
+        "precio": 7
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 500,
+        "marca": "Coca Cola",
+        "precio": 4
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 500,
+        "marca": "Coca Cola Zero",
+        "precio": 4
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 2500,
+        "marca": "Coca Cola",
+        "precio": 10
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 1500,
+        "marca": "Coca Cola Zero",
+        "precio": 8
+    },
+    {
+        "nombre": "Bebida",
+        "contenido": 2500,
+        "marca": "Coca Cola Zero",
+        "precio": 10
+    },
+    {
+        "nombre": "Hielo",
+        "contenido": 3000,
+        "marca": "Bells",
+        "precio": 10
+    },
+    {
+        "nombre": "Hielo",
+        "contenido": 3000,
+        "marca": "Artisan",
+        "precio": 8
+    },
+    {
+        "nombre": "Hielo",
+        "contenido": 1800,
+        "marca": "Bells Cokctail",
+        "precio": 10
+    }
+]

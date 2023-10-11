@@ -11,7 +11,7 @@ let countProducts = document.querySelector(`#cart__countproducts`);
 
 
 // VARIABLES GENERALES
-let TextoLista="";
+let TextoLista = "";
 let NewItem = {};
 
 //ARRAYS
@@ -19,8 +19,22 @@ let productos = [];
 let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
+let ProductosJSOn = [];
 
 // BASE DE DATOS DE PRODUCTOS LOCALSTORAGE
+
+fetch('./productos.json')
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+    })
+    .then((productos) => {
+        ProductosJSOn = productos;
+
+    })
+
+
 productos = JSON.parse(localStorage.getItem("Productos"));
 ProductosPromociones = JSON.parse(localStorage.getItem("Promociones"));
 
@@ -37,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => { ListaProductos(productos, 
 // FUNCION TEXTOLISTA
 function Textolista(el) {
     (el.contenido >= 1000)
-            ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
-            : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
-            return TextoLista
-        }
+        ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
+        : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
+    return TextoLista
+}
 // FUNCION NUEVO ITEM
-function ItemNew(array,object){
-    
-    array.forEach((el) => {   
+function ItemNew(array, object) {
+
+    array.forEach((el) => {
         if (object.nombre == Textolista(el)) {
             NewItem = new Item(el, object.cantidad);
         }
@@ -178,9 +192,9 @@ productList.addEventListener(`click`, e => {
             nombre: item.querySelector(`h5`).textContent,
             precio: item.querySelector(`span`).textContent,
         };
-        
-        ItemNew(productos,InfoCart);
-        ItemNew(ProductosPromociones,InfoCart);
+
+        ItemNew(productos, InfoCart);
+        ItemNew(ProductosPromociones, InfoCart);
 
         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
 
@@ -210,12 +224,12 @@ productList.addEventListener(`click`, e => {
             AllProducts = [...AllProducts, InfoCart];
             Cart = [...Cart, NewItem];
         }
-        
+
         console.log(Cart);
         console.log(AllProducts);
         ContainerCarrito.innerHTML = "";
-        ShowCart();   
-    }  
+        ShowCart();
+    }
 }
 )
 
@@ -227,7 +241,7 @@ rowProduct.addEventListener('click', e => {
         const title = item.querySelector('p').textContent;
         AllProducts = AllProducts.filter(el =>
             el.nombre !== title);
-        Cart= Cart.filter(el =>
+        Cart = Cart.filter(el =>
             Textolista(el.producto) !== title);
         console.log(AllProducts);
         ShowCart();

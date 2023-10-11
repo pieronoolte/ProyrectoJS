@@ -29,8 +29,8 @@ function GetProductos (){
             return response.json();
         }
     })
-    .then((productos) => {
-        ProductosJSOn = productos;
+    .then((elements) => {
+        productos = elements;
         ListaProductos(productos, 0)
     })
 }

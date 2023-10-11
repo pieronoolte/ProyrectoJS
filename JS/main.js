@@ -32,6 +32,7 @@ fetch('/productos.json', {
     if(response.ok){
         return response.json();
     }
+    console.log("Hola");
   })
   .then((lista) => {
     productos = lista

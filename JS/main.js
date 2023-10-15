@@ -25,59 +25,8 @@ let ProductoVino = [];
 let ProductoGin = [];
 let ProductoBebidas =[];
 
-// BADE DE DATOS PRODUCTOS
-// productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
-// productos.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
-// productos.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
-// productos.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
-// productos.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
-// productos.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));
-// productos.push(new Producto("Whisky", 1000, "JW Red label", 22.00, 24));
-// productos.push(new Producto("Whisky", 750, "JW Black label", 22.00, 24));
-// productos.push(new Producto("Whisky", 750, "JW Double Black", 22.00, 24));
-// productos.push(new Producto("Whisky", 750, "JW Gold label", 22.00, 24));
-// productos.push(new Producto("Pisco", 750, "SQ Quebranta", 22.00, 24));
-// productos.push(new Producto("Pisco", 2000, "SQ Quebranta", 22.00, 24));
-// productos.push(new Producto("Pisco", 750, "Cuatro Gallos", 22.00, 24));
-// productos.push(new Producto("Pisco", 750, "Intipalka", 22.00, 24));
-// productos.push(new Producto("Vino", 750, "Tabernero Blanco", 18.00, 32));
-// productos.push(new Producto("Vino", 750, "Tabernero Rosé", 22.00, 32));
-// productos.push(new Producto("Vino", 750, "Tabernero Malbec", 24.00, 32));
-// productos.push(new Producto("Vino", 1500, "Tabernero Borgoña", 24.00, 32));
-// productos.push(new Producto("Gin", 700, "Beefeater", 62.00, 18));
-// productos.push(new Producto("Gin", 700, "Beefeater pink", 72.00, 12));
-// productos.push(new Producto("Gin", 700, "Beefeater orange", 68.00, 22));
-// productos.push(new Producto("Bebida", 375, "Red Bull", 22.00, 50));
-// productos.push(new Producto("Bebida", 375, "Red Bull Light", 22.00, 50));
-// productos.push(new Producto("Bebida", 1500, "Schweppes", 22.00, 52));
-// productos.push(new Producto("Bebida", 1500, "Schweppes Citrus", 22.00, 52));
-// productos.push(new Producto("Bebida", 500, "Coca Cola", 22.00, 78));
-// productos.push(new Producto("Bebida", 500, "Coca Cola Zero", 22.00, 72))
-// productos.push(new Producto("Bebida", 2500, "Coca Cola", 22.00, 45));
-// productos.push(new Producto("Bebida", 1500, "Coca Cola Zero", 22.00, 28));
-// productos.push(new Producto("Bebida", 2500, "Coca Cola Zero", 22.00, 39));
-// productos.push(new Producto("Hielo", 3000, "Bells", 15.00, 24));
-// productos.push(new Producto("Hielo", 3000, "Artisan", 6.00, 24));
-// productos.push(new Producto("Hielo", 1800, "Bells Cokctail", 10.00, 24));
-
-
-// localStorage.setItem("Productos", JSON.stringify(productos));
-
-// // BASE DE DATOS PROMOCIONES
-// ProductosPromociones.push(new Producto("Bebida", 500, "Coca Cola 6unid", 42.00, 20));
-// ProductosPromociones.push(new Producto("Bebida", 3000, "Coca Cola 2unid", 42.00, 20));
-// ProductosPromociones.push(new Producto("Vino", 750, "Tabernero Borgoña 2unid", 34.00, 22));
-// ProductosPromociones.push(new Producto("Pisco", 750, "Cuatro Gallos 2unid", 60.00, 30));
-// ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label 2unid", 62.00, 18));
-// ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label + 6unid Pilsen", 82.00, 14));
-// ProductosPromociones.push(new Producto("Whisky", 750, "JW Red label + Schweppes", 22.00, 24));
-// ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull 6unid", 22.00, 24));
-// ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull Light 6unid", 22.00, 24));
-
-// localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
-
 // FUNCION FETCH PARA BASE DE DATOS
-async function TraerDatos(){
+async function TraerDatosProductos(){
     fetch("JSON/productos.json")
   .then((response) =>{
     if(response.ok){
@@ -87,17 +36,18 @@ async function TraerDatos(){
   .then((lista) => {
     productos=lista;
     ListaProductos(productos,0);
-    localStorage.setItem("Productos", JSON.stringify(productos));
+    
     ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
     ProductoWhisky= productos.filter((el) => { return el.nombre == "Whisky" });
     ProductoPisco = productos.filter((el) => { return el.nombre == "Pisco" });
     ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
     ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
     ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo"});
+    localStorage.setItem("Productos", JSON.stringify(productos));
   })
 }
 
-  async function TraerDatosPromociones(){
+async function TraerDatosPromociones(){
     fetch("JSON/promociones.json")
   .then((response) =>{
     if(response.ok){
@@ -108,34 +58,10 @@ async function TraerDatos(){
     ProductosPromociones=lista;
     ListaProductos(ProductosPromociones,33);
     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
-  })}
+  })
+}
 
-
-
-
-document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
-
-
-
-
-
-// async function FilterProductos (arrayFilter, categoria) {
-//    await TraerDatos()
-//    .then(() =>{
-//     ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
-//    })
-// }
-
-
-// // BASE DE DATOS DE PRODUCTOS POR FILTRO
-// FilterProductos(ProductoRon,"Ron");
-// FilterProductos(ProductoWhisky,"Whisky");
-// FilterProductos(ProductoPisco,"Pisco");
-// FilterProductos(ProductoVino,"Vino");
-// FilterProductos(ProductoGin,"Gin");
-// let ProductoBebidas = FilterProductos("Bebida");
-// ProductoBebidas  =[...ProductoBebidas, FilterProductos("Hielo")];
-
+document.addEventListener('DOMContentLoaded', () => {TraerDatosProductos()});
 
 // // FUNCION TEXTOLISTA
 function Textolista(el) {
@@ -144,15 +70,14 @@ function Textolista(el) {
         : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
     return TextoLista
 }
-// // FUNCION NUEVO ITEM
-// async function ItemNew(array, object) {
-//     await array;
-//     array.forEach((el) => {
-//         if (object.nombre == Textolista(el)) {
-//             NewItem = new Item(el, object.cantidad);
-//         }
-//     })
-// }
+// FUNCION NUEVO ITEM
+function ItemNew(array, object) {
+    array.forEach((el) => {
+        if (object.nombre == Textolista(el)) {
+            NewItem = new Item(el, object.cantidad);
+        }
+    })
+}
 // // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
 async function ListaProductos(array, j) {
     await array;
@@ -172,65 +97,65 @@ async function ListaProductos(array, j) {
     });
 }
 
-// // FUNCION VERIFICACION LENGTH
-// if (AllProducts.length == 0) {
-//     CartTotal.innerHTML = `
-//     <h3>El carrito esta vacio</h3>
-//     <span class="total-pagar"></span>
-//     `;
-// };
+// FUNCION VERIFICACION LENGTH
+if (AllProducts.length == 0) {
+    CartTotal.innerHTML = `
+    <h3>El carrito esta vacio</h3>
+    <span class="total-pagar"></span>
+    `;
+};
 
-// // FUNCION SHOWCART
-// const ShowCart = () => {
-//     if (AllProducts.length == 0) {
-//         CartTotal.innerHTML = `
-//         <h3>El carrito esta vacio</h3>
-//         `;
-//         countProducts.innerText = 0;
-//         ContainerCarrito.innerHTML = ``;
-//     } else {
-//         let Total = 0;
-//         let TotalCantidad = 0;
-//         ContainerCarrito.innerHTML = ``;
-//         AllProducts.forEach(e => {
-//             ContainerCarrito.innerHTML = ContainerCarrito.innerHTML + `
-//                 <div class="cart__product">
-//                     <div class="cartproduct__info">
-//                         <span class="cartproduct__quantity">${e.cantidad}</span>
-//                         <p class="cartproduct__title">${e.nombre}</p>
-//                         <span class="cartproduct__price">${e.precio}</span>
-//                     </div>
+// FUNCION SHOWCART
+const ShowCart = () => {
+    if (AllProducts.length == 0) {
+        CartTotal.innerHTML = `
+        <h3>El carrito esta vacio</h3>
+        `;
+        countProducts.innerText = 0;
+        ContainerCarrito.innerHTML = ``;
+    } else {
+        let Total = 0;
+        let TotalCantidad = 0;
+        ContainerCarrito.innerHTML = ``;
+        AllProducts.forEach(e => {
+            ContainerCarrito.innerHTML = ContainerCarrito.innerHTML + `
+                <div class="cart__product">
+                    <div class="cartproduct__info">
+                        <span class="cartproduct__quantity">${e.cantidad}</span>
+                        <p class="cartproduct__title">${e.nombre}</p>
+                        <span class="cartproduct__price">${e.precio}</span>
+                    </div>
 
 
-//                     <svg
-//                         xmlns="http://www.w3.org/2000/svg"
-//                         fill="none"
-//                         viewBox="0 0 24 24"
-//                         stroke-width="1.5"
-//                         stroke="currentColor"
-//                         class="cartproduct__icon">
-//                         <path
-//                             stroke-linecap="round"
-//                             stroke-linejoin="round"
-//                             d="M6 18L18 6M6 6l12 12"/>
-//                     </svg>
-//                 </div>
-//                 `;
-//             Total = Total + parseInt(e.precio.slice(1) * e.cantidad);
-//             TotalCantidad = TotalCantidad + e.cantidad;
-//         })
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="cartproduct__icon">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                `;
+            Total = Total + parseInt(e.precio.slice(1) * e.cantidad);
+            TotalCantidad = TotalCantidad + e.cantidad;
+        })
 
-//         CartTotal.innerHTML = `
-//         <h3>Total:</h3>
-//         <span class="pay__total">$${Total.toFixed(2)}</span>
-//         <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
-//         `;
+        CartTotal.innerHTML = `
+        <h3>Total:</h3>
+        <span class="pay__total">$${Total.toFixed(2)}</span>
+        <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
+        `;
 
-//         sessionStorage.clear();
-//         countProducts.innerText = TotalCantidad;
-//         sessionStorage.setItem("Cart", JSON.stringify(Cart));
-//     };
-// }
+        sessionStorage.clear();
+        countProducts.innerText = TotalCantidad;
+        sessionStorage.setItem("Cart", JSON.stringify(Cart));
+    };
+}
 
 
 // // FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
@@ -254,86 +179,86 @@ FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas
 FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
 
 // // EVENTO KEYUP FILTRO POR INPUT TEXT 
-// document.addEventListener('keyup', e => {
+document.addEventListener('keyup', e => {
 
-//     if (e.target.matches(`#nav__search`)) {
-//         document.querySelectorAll(`.productos__card`).forEach((el) => {
-//             el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-//                 ? el.classList.remove("card__filtro")
-//                 : el.classList.add("card__filtro")
-//         })
-//     }
-// })
+    if (e.target.matches(`#nav__search`)) {
+        document.querySelectorAll(`.productos__card`).forEach((el) => {
+            el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+                ? el.classList.remove("card__filtro")
+                : el.classList.add("card__filtro")
+        })
+    }
+})
 
 // // EVENTO CLICK DESGLOSAR CARRITO
-// BtnCart.addEventListener('click', () => {
-//     CartContent.classList.toggle('cart__content--hidden')
-// })
+BtnCart.addEventListener('click', () => {
+    CartContent.classList.toggle('cart__content--hidden')
+})
 
 // // EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
-// productList.addEventListener(`click`, async (e) => {
+productList.addEventListener(`click`, (e) => {
     
 
-//     if (e.target.classList.contains(`btn-add-cart`)) {
-//         const item = e.target.parentElement;
-//         const InfoCart = {
-//             cantidad: 1,
-//             nombre: item.querySelector(`h5`).textContent,
-//             precio: item.querySelector(`span`).textContent,
-//         };
+    if (e.target.classList.contains(`btn-add-cart`)) {
+        const item = e.target.parentElement;
+        const InfoCart = {
+            cantidad: 1,
+            nombre: item.querySelector(`h5`).textContent,
+            precio: item.querySelector(`span`).textContent,
+        };
 
-//         await ItemNew(productos, InfoCart);
-//         await ItemNew(ProductosPromociones, InfoCart);
+        ItemNew(productos, InfoCart);
+        ItemNew(ProductosPromociones, InfoCart);
 
-//         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
+        const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
 
-//         if (Duplicate) {
-//             const products = AllProducts.map(item => {
-//                 if (item.nombre === InfoCart.nombre) {
-//                     item.cantidad++;
-//                     return item;
-//                 } else {
-//                     return item;
-//                 }
-//             });
-//             AllProducts = [...products];
+        if (Duplicate) {
+            const products = AllProducts.map(item => {
+                if (item.nombre === InfoCart.nombre) {
+                    item.cantidad++;
+                    return item;
+                } else {
+                    return item;
+                }
+            });
+            AllProducts = [...products];
 
-//             const RefreshItem = Cart.map(el => {
-//                 Textolista(el.producto);
-//                 if (TextoLista === InfoCart.nombre) {
-//                     el.cantidad++;
-//                     return el;
-//                 } else {
-//                     return el;
-//                 }
-//             });
-//             Cart = [...RefreshItem];
+            const RefreshItem = Cart.map(el => {
+                Textolista(el.producto);
+                if (TextoLista === InfoCart.nombre) {
+                    el.cantidad++;
+                    return el;
+                } else {
+                    return el;
+                }
+            });
+            Cart = [...RefreshItem];
 
-//         } else {
-//             AllProducts = [...AllProducts, InfoCart];
-//             Cart = [...Cart, NewItem];
-//         }
+        } else {
+            AllProducts = [...AllProducts, InfoCart];
+            Cart = [...Cart, NewItem];
+        }
 
-//         console.log(Cart);
-//         console.log(AllProducts);
-//         ContainerCarrito.innerHTML = "";
-//         ShowCart();
-//     }
-// }
-// )
+        console.log(Cart);
+        console.log(AllProducts);
+        ContainerCarrito.innerHTML = "";
+        ShowCart();
+    }
+}
+)
 
 
 // // EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
-// rowProduct.addEventListener('click', e => {
-//     if (e.target.classList.contains('cartproduct__icon')) {
-//         const item = e.target.parentElement;
-//         const title = item.querySelector('p').textContent;
-//         AllProducts = AllProducts.filter(el =>
-//             el.nombre !== title);
-//         Cart = Cart.filter(el =>
-//             Textolista(el.producto) !== title);
-//         console.log(AllProducts);
-//         ShowCart();
-//     }
-// });
+rowProduct.addEventListener('click', e => {
+    if (e.target.classList.contains('cartproduct__icon')) {
+        const item = e.target.parentElement;
+        const title = item.querySelector('p').textContent;
+        AllProducts = AllProducts.filter(el =>
+            el.nombre !== title);
+        Cart = Cart.filter(el =>
+            Textolista(el.producto) !== title);
+        console.log(AllProducts);
+        ShowCart();
+    }
+});
 

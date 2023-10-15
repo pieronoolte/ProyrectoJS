@@ -71,18 +71,16 @@ let Cart = [];
 // localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 
 // FUNCION FETCH PARA BASE DE DATOS
-async function TraerDatos(json,array){
-    fetch(json)
+async function TraerDatos(){
+    fetch("JSON/productos.json")
   .then((response) =>{
     if(response.ok){
         return response.json();
     }
-    console.log("Hola");
   })
   .then((lista) => {
-    array=lista;
-    console.log(array);
-    return array;
+    productos=lista;
+    ListaProductos(productos,0);
   })
 //   if(array == productos){
 //     localStorage.setItem("Productos", JSON.stringify(productos));
@@ -102,7 +100,7 @@ async function TraerDatos(json,array){
 //     console.log(array);
 //   })
 
-document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
+document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
 
 

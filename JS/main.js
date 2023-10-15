@@ -107,18 +107,24 @@ document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
 
 
-async function FilterProductos (array, categoria) {
-   await array;
-   return array.filter((el) => { return el.nombre == categoria });
+async function FilterProductos (arrayFilter, categoria) {
+   await TraerDatos()
+   .then(() =>{
+    arrayFilter = productos.filter((el) => { return el.nombre == categoria });
+   })
 }
 
-
+let ProductoRon =[];
+let ProductoWhisky = [];
+let ProductoPisco = [];
+let ProductoVino = [];
+let ProductoGin = [];
 // // BASE DE DATOS DE PRODUCTOS POR FILTRO
-let ProductoRon = FilterProductos(productos,"Ron");
-let ProductoWhisky = FilterProductos(productos,"Whisky");
-let ProductoPisco = FilterProductos(productos,"Pisco");
-let ProductoVino = FilterProductos(productos,"Vino");
-let ProductoGin = FilterProductos(productos,"Gin");
+FilterProductos(ProductoRon,"Ron");
+FilterProductos(ProductoWhisky,"Whisky");
+FilterProductos(ProductoPisco,"Pisco");
+FilterProductos(ProductoVino,"Vino");
+FilterProductos(ProductoGin,"Gin");
 // let ProductoBebidas = FilterProductos("Bebida");
 // ProductoBebidas  =[...ProductoBebidas, FilterProductos("Hielo")];
 

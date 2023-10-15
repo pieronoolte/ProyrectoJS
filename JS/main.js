@@ -71,9 +71,27 @@ let Cart = [];
 // localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 
 // FUNCION FETCH PARA BASE DE DATOS
-// async function TraerDatos(json,array){
-//     fetch(json)
-//   .then((response) =>{
+async function TraerDatos(json,array){
+    fetch(json)
+  .then((response) =>{
+    if(response.ok){
+        return response.json();
+    }
+    console.log("Hola");
+  })
+  .then((lista) => {
+    array=lista;
+    console.log(array);
+    return array;
+  })
+//   if(array == productos){
+//     localStorage.setItem("Productos", JSON.stringify(productos));
+//   }else{
+//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
+}
+
+// fetch("JSON/productos.json")
+// .then((response) =>{
 //     if(response.ok){
 //         return response.json();
 //     }
@@ -83,26 +101,8 @@ let Cart = [];
 //     array=lista;
 //     console.log(array);
 //   })
-//   if(array == productos){
-//     localStorage.setItem("Productos", JSON.stringify(productos));
-//   }else{
-//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
-//   }
-// 
 
-fetch("JSON/productos.json")
-.then((response) =>{
-    if(response.ok){
-        return response.json();
-    }
-    console.log("Hola");
-  })
-  .then((lista) => {
-    array=lista;
-    console.log(array);
-  })
-
-// document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
+document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
 
 
 
@@ -126,12 +126,12 @@ fetch("JSON/productos.json")
 
 
 // // FUNCION TEXTOLISTA
-// function Textolista(el) {
-//     (el.contenido >= 1000)
-//         ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
-//         : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
-//     return TextoLista
-// }
+function Textolista(el) {
+    (el.contenido >= 1000)
+        ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
+        : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
+    return TextoLista
+}
 // // FUNCION NUEVO ITEM
 // async function ItemNew(array, object) {
 //     await array;
@@ -142,23 +142,23 @@ fetch("JSON/productos.json")
 //     })
 // }
 // // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
-// async function ListaProductos(array, j) {
-//     await array;
-//     productoscard.innerHTML = "";
-//     array.forEach((el, index) => {
-//         Textolista(el);
-//         productoscard.innerHTML = productoscard.innerHTML + `
-//         <div class="card m-2 productos__card" style="width: 18rem;">
-//             <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
-//             <div class="card-body">
-//                 <h5 class="card-title">${TextoLista}</h5>
-//                 <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
-//                 <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
-//             </div>
-//         </div>
-//         `;
-//     });
-// }
+async function ListaProductos(array, j) {
+    await array;
+    productoscard.innerHTML = "";
+    array.forEach((el, index) => {
+        Textolista(el);
+        productoscard.innerHTML = productoscard.innerHTML + `
+        <div class="card m-2 productos__card" style="width: 18rem;">
+            <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${TextoLista}</h5>
+                <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
+                <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
+            </div>
+        </div>
+        `;
+    });
+}
 
 // // FUNCION VERIFICACION LENGTH
 // if (AllProducts.length == 0) {

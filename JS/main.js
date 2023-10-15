@@ -81,7 +81,7 @@ async function TraerDatos(json,array){
   })
   .then((lista) => {
     array=lista;
-    return array;
+    console.log(array);
   })
 //   if(array == productos){
 //     localStorage.setItem("Productos", JSON.stringify(productos));
@@ -89,226 +89,229 @@ async function TraerDatos(json,array){
 //     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 //   }
 }
-document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
+
+TraerDatos("JSON/productos.json",productos)
+
+// document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
 
 
 
 
-// document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });
-async function FilterProductos (categoria) {
-   const response = await TraerDatos("JSON/productos.json",productos);
-   response.filter((el) => { return el.nombre == categoria });
-   return response;
-}
+// // document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });
+// async function FilterProductos (categoria) {
+//    const response = await TraerDatos("JSON/productos.json",productos);
+//    response.filter((el) => { return el.nombre == categoria });
+//    return response;
+// }
 
 
-// BASE DE DATOS DE PRODUCTOS POR FILTRO
-let ProductoRon = FilterProductos("Ron");
-let ProductoWhisky = FilterProductos("Whisky");
-let ProductoPisco = FilterProductos("Pisco");
-let ProductoVino = FilterProductos("Vino");
-let ProductoGin = FilterProductos("Gin");
-let ProductoBebidas = FilterProductos("Bebida").concat(FilterProductos("Hielo"));
+// // BASE DE DATOS DE PRODUCTOS POR FILTRO
+// let ProductoRon = FilterProductos("Ron");
+// let ProductoWhisky = FilterProductos("Whisky");
+// let ProductoPisco = FilterProductos("Pisco");
+// let ProductoVino = FilterProductos("Vino");
+// let ProductoGin = FilterProductos("Gin");
+// let ProductoBebidas = FilterProductos("Bebida");
+// ProductoBebidas  =[...ProductoBebidas, FilterProductos("Hielo")];
 
 
+// // FUNCION TEXTOLISTA
+// function Textolista(el) {
+//     (el.contenido >= 1000)
+//         ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
+//         : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
+//     return TextoLista
+// }
+// // FUNCION NUEVO ITEM
+// async function ItemNew(array, object) {
+//     await array;
+//     array.forEach((el) => {
+//         if (object.nombre == Textolista(el)) {
+//             NewItem = new Item(el, object.cantidad);
+//         }
+//     })
+// }
+// // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
+// async function ListaProductos(array, j) {
+//     await array;
+//     productoscard.innerHTML = "";
+//     array.forEach((el, index) => {
+//         Textolista(el);
+//         productoscard.innerHTML = productoscard.innerHTML + `
+//         <div class="card m-2 productos__card" style="width: 18rem;">
+//             <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
+//             <div class="card-body">
+//                 <h5 class="card-title">${TextoLista}</h5>
+//                 <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
+//                 <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
+//             </div>
+//         </div>
+//         `;
+//     });
+// }
 
-// FUNCION TEXTOLISTA
-function Textolista(el) {
-    (el.contenido >= 1000)
-        ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
-        : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
-    return TextoLista
-}
-// FUNCION NUEVO ITEM
-async function ItemNew(array, object) {
-    await array;
-    array.forEach((el) => {
-        if (object.nombre == Textolista(el)) {
-            NewItem = new Item(el, object.cantidad);
-        }
-    })
-}
-// FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
-async function ListaProductos(array, j) {
-    await array;
-    productoscard.innerHTML = "";
-    array.forEach((el, index) => {
-        Textolista(el);
-        productoscard.innerHTML = productoscard.innerHTML + `
-        <div class="card m-2 productos__card" style="width: 18rem;">
-            <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${TextoLista}</h5>
-                <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
-                <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
-            </div>
-        </div>
-        `;
-    });
-}
+// // FUNCION VERIFICACION LENGTH
+// if (AllProducts.length == 0) {
+//     CartTotal.innerHTML = `
+//     <h3>El carrito esta vacio</h3>
+//     <span class="total-pagar"></span>
+//     `;
+// };
 
-// FUNCION VERIFICACION LENGTH
-if (AllProducts.length == 0) {
-    CartTotal.innerHTML = `
-    <h3>El carrito esta vacio</h3>
-    <span class="total-pagar"></span>
-    `;
-};
-
-// FUNCION SHOWCART
-const ShowCart = () => {
-    if (AllProducts.length == 0) {
-        CartTotal.innerHTML = `
-        <h3>El carrito esta vacio</h3>
-        `;
-        countProducts.innerText = 0;
-        ContainerCarrito.innerHTML = ``;
-    } else {
-        let Total = 0;
-        let TotalCantidad = 0;
-        ContainerCarrito.innerHTML = ``;
-        AllProducts.forEach(e => {
-            ContainerCarrito.innerHTML = ContainerCarrito.innerHTML + `
-                <div class="cart__product">
-                    <div class="cartproduct__info">
-                        <span class="cartproduct__quantity">${e.cantidad}</span>
-                        <p class="cartproduct__title">${e.nombre}</p>
-                        <span class="cartproduct__price">${e.precio}</span>
-                    </div>
-
-
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="cartproduct__icon">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </div>
-                `;
-            Total = Total + parseInt(e.precio.slice(1) * e.cantidad);
-            TotalCantidad = TotalCantidad + e.cantidad;
-        })
-
-        CartTotal.innerHTML = `
-        <h3>Total:</h3>
-        <span class="pay__total">$${Total.toFixed(2)}</span>
-        <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
-        `;
-
-        sessionStorage.clear();
-        countProducts.innerText = TotalCantidad;
-        sessionStorage.setItem("Cart", JSON.stringify(Cart));
-    };
-}
+// // FUNCION SHOWCART
+// const ShowCart = () => {
+//     if (AllProducts.length == 0) {
+//         CartTotal.innerHTML = `
+//         <h3>El carrito esta vacio</h3>
+//         `;
+//         countProducts.innerText = 0;
+//         ContainerCarrito.innerHTML = ``;
+//     } else {
+//         let Total = 0;
+//         let TotalCantidad = 0;
+//         ContainerCarrito.innerHTML = ``;
+//         AllProducts.forEach(e => {
+//             ContainerCarrito.innerHTML = ContainerCarrito.innerHTML + `
+//                 <div class="cart__product">
+//                     <div class="cartproduct__info">
+//                         <span class="cartproduct__quantity">${e.cantidad}</span>
+//                         <p class="cartproduct__title">${e.nombre}</p>
+//                         <span class="cartproduct__price">${e.precio}</span>
+//                     </div>
 
 
-// FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
-const FiltroProducto1 = document.querySelector(`#nav__list--all`);
-const FiltroProducto2 = document.querySelector(`#nav__list--ron`);
-const FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
-const FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
-const FiltroProducto5 = document.querySelector(`#nav__list--vino`);
-const FiltroProducto6 = document.querySelector(`#nav__list--gin`);
-const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
-const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
+//                     <svg
+//                         xmlns="http://www.w3.org/2000/svg"
+//                         fill="none"
+//                         viewBox="0 0 24 24"
+//                         stroke-width="1.5"
+//                         stroke="currentColor"
+//                         class="cartproduct__icon">
+//                         <path
+//                             stroke-linecap="round"
+//                             stroke-linejoin="round"
+//                             d="M6 18L18 6M6 6l12 12"/>
+//                     </svg>
+//                 </div>
+//                 `;
+//             Total = Total + parseInt(e.precio.slice(1) * e.cantidad);
+//             TotalCantidad = TotalCantidad + e.cantidad;
+//         })
 
-// DESGLOSAR PORDUCTOS SEGUN FILTRO
-FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
-FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
-FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
-FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
-FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
-FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
-FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
-FiltroProducto8.addEventListener('click', () => { ListaProductos(TraerDatos("JSON/promociones.json",ProductosPromociones),33)});
+//         CartTotal.innerHTML = `
+//         <h3>Total:</h3>
+//         <span class="pay__total">$${Total.toFixed(2)}</span>
+//         <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
+//         `;
 
-// EVENTO KEYUP FILTRO POR INPUT TEXT 
-document.addEventListener('keyup', e => {
+//         sessionStorage.clear();
+//         countProducts.innerText = TotalCantidad;
+//         sessionStorage.setItem("Cart", JSON.stringify(Cart));
+//     };
+// }
 
-    if (e.target.matches(`#nav__search`)) {
-        document.querySelectorAll(`.productos__card`).forEach((el) => {
-            el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-                ? el.classList.remove("card__filtro")
-                : el.classList.add("card__filtro")
-        })
-    }
-})
 
-// EVENTO CLICK DESGLOSAR CARRITO
-BtnCart.addEventListener('click', () => {
-    CartContent.classList.toggle('cart__content--hidden')
-})
+// // FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
+// const FiltroProducto1 = document.querySelector(`#nav__list--all`);
+// const FiltroProducto2 = document.querySelector(`#nav__list--ron`);
+// const FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
+// const FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
+// const FiltroProducto5 = document.querySelector(`#nav__list--vino`);
+// const FiltroProducto6 = document.querySelector(`#nav__list--gin`);
+// const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
+// const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
-// EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
-productList.addEventListener(`click`, async (e) => {
+// // DESGLOSAR PORDUCTOS SEGUN FILTRO
+// FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
+// FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
+// FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
+// FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
+// FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
+// FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
+// FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
+// FiltroProducto8.addEventListener('click', () => { ListaProductos(TraerDatos("JSON/promociones.json",ProductosPromociones),33)});
+
+// // EVENTO KEYUP FILTRO POR INPUT TEXT 
+// document.addEventListener('keyup', e => {
+
+//     if (e.target.matches(`#nav__search`)) {
+//         document.querySelectorAll(`.productos__card`).forEach((el) => {
+//             el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+//                 ? el.classList.remove("card__filtro")
+//                 : el.classList.add("card__filtro")
+//         })
+//     }
+// })
+
+// // EVENTO CLICK DESGLOSAR CARRITO
+// BtnCart.addEventListener('click', () => {
+//     CartContent.classList.toggle('cart__content--hidden')
+// })
+
+// // EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
+// productList.addEventListener(`click`, async (e) => {
     
 
-    if (e.target.classList.contains(`btn-add-cart`)) {
-        const item = e.target.parentElement;
-        const InfoCart = {
-            cantidad: 1,
-            nombre: item.querySelector(`h5`).textContent,
-            precio: item.querySelector(`span`).textContent,
-        };
+//     if (e.target.classList.contains(`btn-add-cart`)) {
+//         const item = e.target.parentElement;
+//         const InfoCart = {
+//             cantidad: 1,
+//             nombre: item.querySelector(`h5`).textContent,
+//             precio: item.querySelector(`span`).textContent,
+//         };
 
-        await ItemNew(productos, InfoCart);
-        await ItemNew(ProductosPromociones, InfoCart);
+//         await ItemNew(productos, InfoCart);
+//         await ItemNew(ProductosPromociones, InfoCart);
 
-        const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
+//         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
 
-        if (Duplicate) {
-            const products = AllProducts.map(item => {
-                if (item.nombre === InfoCart.nombre) {
-                    item.cantidad++;
-                    return item;
-                } else {
-                    return item;
-                }
-            });
-            AllProducts = [...products];
+//         if (Duplicate) {
+//             const products = AllProducts.map(item => {
+//                 if (item.nombre === InfoCart.nombre) {
+//                     item.cantidad++;
+//                     return item;
+//                 } else {
+//                     return item;
+//                 }
+//             });
+//             AllProducts = [...products];
 
-            const RefreshItem = Cart.map(el => {
-                Textolista(el.producto);
-                if (TextoLista === InfoCart.nombre) {
-                    el.cantidad++;
-                    return el;
-                } else {
-                    return el;
-                }
-            });
-            Cart = [...RefreshItem];
+//             const RefreshItem = Cart.map(el => {
+//                 Textolista(el.producto);
+//                 if (TextoLista === InfoCart.nombre) {
+//                     el.cantidad++;
+//                     return el;
+//                 } else {
+//                     return el;
+//                 }
+//             });
+//             Cart = [...RefreshItem];
 
-        } else {
-            AllProducts = [...AllProducts, InfoCart];
-            Cart = [...Cart, NewItem];
-        }
+//         } else {
+//             AllProducts = [...AllProducts, InfoCart];
+//             Cart = [...Cart, NewItem];
+//         }
 
-        console.log(Cart);
-        console.log(AllProducts);
-        ContainerCarrito.innerHTML = "";
-        ShowCart();
-    }
-}
-)
+//         console.log(Cart);
+//         console.log(AllProducts);
+//         ContainerCarrito.innerHTML = "";
+//         ShowCart();
+//     }
+// }
+// )
 
 
-// EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
-rowProduct.addEventListener('click', e => {
-    if (e.target.classList.contains('cartproduct__icon')) {
-        const item = e.target.parentElement;
-        const title = item.querySelector('p').textContent;
-        AllProducts = AllProducts.filter(el =>
-            el.nombre !== title);
-        Cart = Cart.filter(el =>
-            Textolista(el.producto) !== title);
-        console.log(AllProducts);
-        ShowCart();
-    }
-});
+// // EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
+// rowProduct.addEventListener('click', e => {
+//     if (e.target.classList.contains('cartproduct__icon')) {
+//         const item = e.target.parentElement;
+//         const title = item.querySelector('p').textContent;
+//         AllProducts = AllProducts.filter(el =>
+//             el.nombre !== title);
+//         Cart = Cart.filter(el =>
+//             Textolista(el.producto) !== title);
+//         console.log(AllProducts);
+//         ShowCart();
+//     }
+// });
 

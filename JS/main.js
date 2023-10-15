@@ -115,10 +115,10 @@ async function FilterProductos (categoria) {
 
 // // BASE DE DATOS DE PRODUCTOS POR FILTRO
 let ProductoRon = FilterProductos("Ron");
-// let ProductoWhisky = FilterProductos("Whisky");
-// let ProductoPisco = FilterProductos("Pisco");
-// let ProductoVino = FilterProductos("Vino");
-// let ProductoGin = FilterProductos("Gin");
+let ProductoWhisky = FilterProductos("Whisky");
+let ProductoPisco = FilterProductos("Pisco");
+let ProductoVino = FilterProductos("Vino");
+let ProductoGin = FilterProductos("Gin");
 // let ProductoBebidas = FilterProductos("Bebida");
 // ProductoBebidas  =[...ProductoBebidas, FilterProductos("Hielo")];
 
@@ -232,10 +232,10 @@ const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 // // DESGLOSAR PORDUCTOS SEGUN FILTRO
 FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
 FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
-// FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
-// FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
-// FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
-// FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
+FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
+FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
+FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
+FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
 // FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
 

@@ -82,6 +82,12 @@ async function TraerDatos(){
     productos=lista;
     ListaProductos(productos,0);
     localStorage.setItem("Productos", JSON.stringify(productos));
+    ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
+    ProductoWhisky= productos.filter((el) => { return el.nombre == "Whisky" });
+    ProductoPisco = productos.filter((el) => { return el.nombre == "Pisco" });
+    ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
+    ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
+    ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo"});
   })
 }
 
@@ -107,24 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
 
 
-async function FilterProductos (arrayFilter, categoria) {
-   await TraerDatos()
-   .then(() =>{
-    arrayFilter = productos.filter((el) => { return el.nombre == categoria });
-   })
-}
+// async function FilterProductos (arrayFilter, categoria) {
+//    await TraerDatos()
+//    .then(() =>{
+//     ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
+//    })
+// }
 
 let ProductoRon =[];
 let ProductoWhisky = [];
 let ProductoPisco = [];
 let ProductoVino = [];
 let ProductoGin = [];
+let ProductoBebidas =[];
 // // BASE DE DATOS DE PRODUCTOS POR FILTRO
-FilterProductos(ProductoRon,"Ron");
-FilterProductos(ProductoWhisky,"Whisky");
-FilterProductos(ProductoPisco,"Pisco");
-FilterProductos(ProductoVino,"Vino");
-FilterProductos(ProductoGin,"Gin");
+// FilterProductos(ProductoRon,"Ron");
+// FilterProductos(ProductoWhisky,"Whisky");
+// FilterProductos(ProductoPisco,"Pisco");
+// FilterProductos(ProductoVino,"Vino");
+// FilterProductos(ProductoGin,"Gin");
 // let ProductoBebidas = FilterProductos("Bebida");
 // ProductoBebidas  =[...ProductoBebidas, FilterProductos("Hielo")];
 
@@ -242,7 +249,7 @@ FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky,
 FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
 FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
 FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
-// FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
+FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
 
 // // EVENTO KEYUP FILTRO POR INPUT TEXT 

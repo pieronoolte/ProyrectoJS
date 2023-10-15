@@ -71,9 +71,27 @@ let Cart = [];
 // localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 
 // FUNCION FETCH PARA BASE DE DATOS
-async function TraerDatos(json,array){
-    fetch(json)
-  .then((response) =>{
+// async function TraerDatos(json,array){
+//     fetch(json)
+//   .then((response) =>{
+//     if(response.ok){
+//         return response.json();
+//     }
+//     console.log("Hola");
+//   })
+//   .then((lista) => {
+//     array=lista;
+//     console.log(array);
+//   })
+//   if(array == productos){
+//     localStorage.setItem("Productos", JSON.stringify(productos));
+//   }else{
+//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
+//   }
+// 
+
+fetch("JSON/productos.json")
+.then((response) =>{
     if(response.ok){
         return response.json();
     }
@@ -83,14 +101,6 @@ async function TraerDatos(json,array){
     array=lista;
     console.log(array);
   })
-//   if(array == productos){
-//     localStorage.setItem("Productos", JSON.stringify(productos));
-//   }else{
-//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
-//   }
-}
-
-TraerDatos("JSON/productos.json",productos)
 
 // document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
 

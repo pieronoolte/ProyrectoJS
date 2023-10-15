@@ -18,6 +18,12 @@ let productos = [];
 let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
+let ProductoRon =[];
+let ProductoWhisky = [];
+let ProductoPisco = [];
+let ProductoVino = [];
+let ProductoGin = [];
+let ProductoBebidas =[];
 
 // BADE DE DATOS PRODUCTOS
 // productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
@@ -120,12 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 //    })
 // }
 
-let ProductoRon =[];
-let ProductoWhisky = [];
-let ProductoPisco = [];
-let ProductoVino = [];
-let ProductoGin = [];
-let ProductoBebidas =[];
+
 // // BASE DE DATOS DE PRODUCTOS POR FILTRO
 // FilterProductos(ProductoRon,"Ron");
 // FilterProductos(ProductoWhisky,"Whisky");

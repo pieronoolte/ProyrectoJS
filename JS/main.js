@@ -106,16 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
 
 
-// // document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });
-// async function FilterProductos (categoria) {
-//    const response = await TraerDatos("JSON/productos.json",productos);
-//    response.filter((el) => { return el.nombre == categoria });
-//    return response;
-// }
+
+async function FilterProductos (categoria) {
+   await TraerDatos();
+   productos.filter((el) => { return el.nombre == categoria });
+   return response;
+}
 
 
 // // BASE DE DATOS DE PRODUCTOS POR FILTRO
-// let ProductoRon = FilterProductos("Ron");
+let ProductoRon = FilterProductos("Ron");
 // let ProductoWhisky = FilterProductos("Whisky");
 // let ProductoPisco = FilterProductos("Pisco");
 // let ProductoVino = FilterProductos("Vino");
@@ -221,13 +221,13 @@ async function ListaProductos(array, j) {
 
 
 // // FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
-// const FiltroProducto1 = document.querySelector(`#nav__list--all`);
-// const FiltroProducto2 = document.querySelector(`#nav__list--ron`);
-// const FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
-// const FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
-// const FiltroProducto5 = document.querySelector(`#nav__list--vino`);
-// const FiltroProducto6 = document.querySelector(`#nav__list--gin`);
-// const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
+const FiltroProducto1 = document.querySelector(`#nav__list--all`);
+const FiltroProducto2 = document.querySelector(`#nav__list--ron`);
+const FiltroProducto3 = document.querySelector(`#nav__list--whisky`);
+const FiltroProducto4 = document.querySelector(`#nav__list--pisco`);
+const FiltroProducto5 = document.querySelector(`#nav__list--vino`);
+const FiltroProducto6 = document.querySelector(`#nav__list--gin`);
+const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 // // DESGLOSAR PORDUCTOS SEGUN FILTRO

@@ -83,8 +83,15 @@ async function TraerDatos(json,array){
     array=lista;
     return array;
   })
+//   if(array == productos){
+//     localStorage.setItem("Productos", JSON.stringify(productos));
+//   }else{
+//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
+//   }
 }
 document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
+
+
 
 
 // document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });

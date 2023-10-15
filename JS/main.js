@@ -109,8 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
 async function FilterProductos (categoria) {
    await TraerDatos();
-   productos.filter((el) => { return el.nombre == categoria });
-   return response;
+   return productos.filter((el) => { return el.nombre == categoria });
 }
 
 
@@ -231,8 +230,8 @@ const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
 const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 // // DESGLOSAR PORDUCTOS SEGUN FILTRO
-// FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
-// FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
+FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
+FiltroProducto2.addEventListener('click', () => { ListaProductos(ProductoRon, 0) });
 // FiltroProducto3.addEventListener('click', () => { ListaProductos(ProductoWhisky, 6) })
 // FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 10) });
 // FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });

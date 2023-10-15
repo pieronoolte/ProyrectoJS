@@ -21,7 +21,16 @@ $form-feedback-valid-color: $principal;
     margin-right: $value4;
 }
 
-
+@mixin dflex($justify, $value1, $value2, $value3, $value4) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    margin-left: $value1;
+    margin-top: $value2;
+    margin-left: $value3;
+    margin-right: $value4;
+}
 
 
 @keyframes showCategory {

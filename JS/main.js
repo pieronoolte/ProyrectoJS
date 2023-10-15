@@ -81,24 +81,25 @@ async function TraerDatos(){
   .then((lista) => {
     productos=lista;
     ListaProductos(productos,0);
+    localStorage.setItem("Productos", JSON.stringify(productos));
   })
-//   if(array == productos){
-//     localStorage.setItem("Productos", JSON.stringify(productos));
-//   }else{
-//     localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 }
 
-// fetch("JSON/productos.json")
-// .then((response) =>{
-//     if(response.ok){
-//         return response.json();
-//     }
-//     console.log("Hola");
-//   })
-//   .then((lista) => {
-//     array=lista;
-//     console.log(array);
-//   })
+  async function TraerDatosPromociones(){
+    fetch("JSON/promociones.json")
+  .then((response) =>{
+    if(response.ok){
+        return response.json();
+    }
+  })
+  .then((lista) => {
+    ProductosPromociones=lista;
+    ListaProductos(ProductosPromociones,33);
+    localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
+  })}
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {TraerDatos()});
 
@@ -227,7 +228,7 @@ async function ListaProductos(array, j) {
 // const FiltroProducto5 = document.querySelector(`#nav__list--vino`);
 // const FiltroProducto6 = document.querySelector(`#nav__list--gin`);
 // const FiltroProducto7 = document.querySelector(`#nav__list--bebidas`);
-// const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
+const FiltroProducto8 = document.querySelector(`#nav__list--promociones`);
 
 // // DESGLOSAR PORDUCTOS SEGUN FILTRO
 // FiltroProducto1.addEventListener('click', () => { ListaProductos(productos, 0)});
@@ -237,7 +238,7 @@ async function ListaProductos(array, j) {
 // FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
 // FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
 // FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
-// FiltroProducto8.addEventListener('click', () => { ListaProductos(TraerDatos("JSON/promociones.json",ProductosPromociones),33)});
+FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
 
 // // EVENTO KEYUP FILTRO POR INPUT TEXT 
 // document.addEventListener('keyup', e => {

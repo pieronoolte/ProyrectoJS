@@ -19,12 +19,6 @@
 // productos.push(new Producto("Gin", 700, "Beefeater", 62.00, 18));
 // productos.push(new Producto("Gin", 700, "Beefeater pink", 72.00, 12));
 // productos.push(new Producto("Gin", 700, "Beefeater orange", 68.00, 22));
-// productos.push(new Producto("Bebida", 375, "Red Bull", 22.00, 50));
-// productos.push(new Producto("Bebida", 375, "Red Bull Light", 22.00, 50));
-// productos.push(new Producto("Bebida", 1500, "Schweppes", 22.00, 52));
-// productos.push(new Producto("Bebida", 1500, "Schweppes Citrus", 22.00, 52));
-// productos.push(new Producto("Bebida", 500, "Coca Cola", 22.00, 78));
-// productos.push(new Producto("Bebida", 500, "Coca Cola Zero", 22.00, 72))
 // productos.push(new Producto("Bebida", 2500, "Coca Cola", 22.00, 45));
 // productos.push(new Producto("Bebida", 1500, "Coca Cola Zero", 22.00, 28));
 // productos.push(new Producto("Bebida", 2500, "Coca Cola Zero", 22.00, 39));

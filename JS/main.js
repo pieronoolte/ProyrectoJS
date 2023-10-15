@@ -20,84 +20,88 @@ let AllProducts = [];
 let Cart = [];
 
 // BADE DE DATOS PRODUCTOS
-productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
-productos.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
-productos.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
-productos.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
-productos.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
-productos.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));
-productos.push(new Producto("Whisky", 1000, "JW Red label", 22.00, 24));
-productos.push(new Producto("Whisky", 750, "JW Black label", 22.00, 24));
-productos.push(new Producto("Whisky", 750, "JW Double Black", 22.00, 24));
-productos.push(new Producto("Whisky", 750, "JW Gold label", 22.00, 24));
-productos.push(new Producto("Pisco", 750, "SQ Quebranta", 22.00, 24));
-productos.push(new Producto("Pisco", 2000, "SQ Quebranta", 22.00, 24));
-productos.push(new Producto("Pisco", 750, "Cuatro Gallos", 22.00, 24));
-productos.push(new Producto("Pisco", 750, "Intipalka", 22.00, 24));
-productos.push(new Producto("Vino", 750, "Tabernero Blanco", 18.00, 32));
-productos.push(new Producto("Vino", 750, "Tabernero Rosé", 22.00, 32));
-productos.push(new Producto("Vino", 750, "Tabernero Malbec", 24.00, 32));
-productos.push(new Producto("Vino", 1500, "Tabernero Borgoña", 24.00, 32));
-productos.push(new Producto("Gin", 700, "Beefeater", 62.00, 18));
-productos.push(new Producto("Gin", 700, "Beefeater pink", 72.00, 12));
-productos.push(new Producto("Gin", 700, "Beefeater orange", 68.00, 22));
-productos.push(new Producto("Bebida", 375, "Red Bull", 22.00, 50));
-productos.push(new Producto("Bebida", 375, "Red Bull Light", 22.00, 50));
-productos.push(new Producto("Bebida", 1500, "Schweppes", 22.00, 52));
-productos.push(new Producto("Bebida", 1500, "Schweppes Citrus", 22.00, 52));
-productos.push(new Producto("Bebida", 500, "Coca Cola", 22.00, 78));
-productos.push(new Producto("Bebida", 500, "Coca Cola Zero", 22.00, 72))
-productos.push(new Producto("Bebida", 2500, "Coca Cola", 22.00, 45));
-productos.push(new Producto("Bebida", 1500, "Coca Cola Zero", 22.00, 28));
-productos.push(new Producto("Bebida", 2500, "Coca Cola Zero", 22.00, 39));
-productos.push(new Producto("Hielo", 3000, "Bells", 15.00, 24));
-productos.push(new Producto("Hielo", 3000, "Artisan", 6.00, 24));
-productos.push(new Producto("Hielo", 1800, "Bells Cokctail", 10.00, 24));
+// productos.push(new Producto("Ron", 750, "El abuelo", 32.00, 24));
+// productos.push(new Producto("Ron", 750, "Zacapa 12 años", 42.00, 20));
+// productos.push(new Producto("Ron", 750, "Flor de caña", 34.00, 22));
+// productos.push(new Producto("Ron", 750, "Zacapa XO", 60.00, 30));
+// productos.push(new Producto("Ron", 1750, "Flor de caña", 62.00, 18));
+// productos.push(new Producto("Ron", 1750, "Barcelo", 82.00, 14));
+// productos.push(new Producto("Whisky", 1000, "JW Red label", 22.00, 24));
+// productos.push(new Producto("Whisky", 750, "JW Black label", 22.00, 24));
+// productos.push(new Producto("Whisky", 750, "JW Double Black", 22.00, 24));
+// productos.push(new Producto("Whisky", 750, "JW Gold label", 22.00, 24));
+// productos.push(new Producto("Pisco", 750, "SQ Quebranta", 22.00, 24));
+// productos.push(new Producto("Pisco", 2000, "SQ Quebranta", 22.00, 24));
+// productos.push(new Producto("Pisco", 750, "Cuatro Gallos", 22.00, 24));
+// productos.push(new Producto("Pisco", 750, "Intipalka", 22.00, 24));
+// productos.push(new Producto("Vino", 750, "Tabernero Blanco", 18.00, 32));
+// productos.push(new Producto("Vino", 750, "Tabernero Rosé", 22.00, 32));
+// productos.push(new Producto("Vino", 750, "Tabernero Malbec", 24.00, 32));
+// productos.push(new Producto("Vino", 1500, "Tabernero Borgoña", 24.00, 32));
+// productos.push(new Producto("Gin", 700, "Beefeater", 62.00, 18));
+// productos.push(new Producto("Gin", 700, "Beefeater pink", 72.00, 12));
+// productos.push(new Producto("Gin", 700, "Beefeater orange", 68.00, 22));
+// productos.push(new Producto("Bebida", 375, "Red Bull", 22.00, 50));
+// productos.push(new Producto("Bebida", 375, "Red Bull Light", 22.00, 50));
+// productos.push(new Producto("Bebida", 1500, "Schweppes", 22.00, 52));
+// productos.push(new Producto("Bebida", 1500, "Schweppes Citrus", 22.00, 52));
+// productos.push(new Producto("Bebida", 500, "Coca Cola", 22.00, 78));
+// productos.push(new Producto("Bebida", 500, "Coca Cola Zero", 22.00, 72))
+// productos.push(new Producto("Bebida", 2500, "Coca Cola", 22.00, 45));
+// productos.push(new Producto("Bebida", 1500, "Coca Cola Zero", 22.00, 28));
+// productos.push(new Producto("Bebida", 2500, "Coca Cola Zero", 22.00, 39));
+// productos.push(new Producto("Hielo", 3000, "Bells", 15.00, 24));
+// productos.push(new Producto("Hielo", 3000, "Artisan", 6.00, 24));
+// productos.push(new Producto("Hielo", 1800, "Bells Cokctail", 10.00, 24));
 
 
-localStorage.setItem("Productos", JSON.stringify(productos));
+// localStorage.setItem("Productos", JSON.stringify(productos));
 
-// BASE DE DATOS PROMOCIONES
-ProductosPromociones.push(new Producto("Bebida", 500, "Coca Cola 6unid", 42.00, 20));
-ProductosPromociones.push(new Producto("Bebida", 3000, "Coca Cola 2unid", 42.00, 20));
-ProductosPromociones.push(new Producto("Vino", 750, "Tabernero Borgoña 2unid", 34.00, 22));
-ProductosPromociones.push(new Producto("Pisco", 750, "Cuatro Gallos 2unid", 60.00, 30));
-ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label 2unid", 62.00, 18));
-ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label + 6unid Pilsen", 82.00, 14));
-ProductosPromociones.push(new Producto("Whisky", 750, "JW Red label + Schweppes", 22.00, 24));
-ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull 6unid", 22.00, 24));
-ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull Light 6unid", 22.00, 24));
+// // BASE DE DATOS PROMOCIONES
+// ProductosPromociones.push(new Producto("Bebida", 500, "Coca Cola 6unid", 42.00, 20));
+// ProductosPromociones.push(new Producto("Bebida", 3000, "Coca Cola 2unid", 42.00, 20));
+// ProductosPromociones.push(new Producto("Vino", 750, "Tabernero Borgoña 2unid", 34.00, 22));
+// ProductosPromociones.push(new Producto("Pisco", 750, "Cuatro Gallos 2unid", 60.00, 30));
+// ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label 2unid", 62.00, 18));
+// ProductosPromociones.push(new Producto("Whisky", 750, "JW Black label + 6unid Pilsen", 82.00, 14));
+// ProductosPromociones.push(new Producto("Whisky", 750, "JW Red label + Schweppes", 22.00, 24));
+// ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull 6unid", 22.00, 24));
+// ProductosPromociones.push(new Producto("Bebida", 1500, "Red bull Light 6unid", 22.00, 24));
 
-localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
+// localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
 
-// // FUNCION FETCH PARA BASE DE DATOS
-// function TraerDatos(json,array){
-//     fetch(json)
-//   .then((response) =>{
-//     if(response.ok){
-//         return response.json();
-//     }
-//     console.log("Hola");
-//   })
-//   .then((lista) => {
-//     array=lista;
-//     ListaProductos(array, 0);
-//   })
-// }
-// document.addEventListener('DOMContentLoaded', () => {TraerDatos("JSON/productos.json",productos) });
+// FUNCION FETCH PARA BASE DE DATOS
+async function TraerDatos(json,array){
+    fetch(json)
+  .then((response) =>{
+    if(response.ok){
+        return response.json();
+    }
+    console.log("Hola");
+  })
+  .then((lista) => {
+    array=lista;
+    return array;
+  })
+}
+document.addEventListener('DOMContentLoaded', () => {ListaProductos(TraerDatos("JSON/productos.json",productos),0) });
 
 
-document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });
-
+// document.addEventListener('DOMContentLoaded', () => {ListaProductos(productos, 0) });
+async function FilterProductos (categoria) {
+   const response = await TraerDatos("JSON/productos.json",productos);
+   response.filter((el) => { return el.nombre == categoria });
+   return response;
+}
 
 
 // BASE DE DATOS DE PRODUCTOS POR FILTRO
-let ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
-let ProductoWhisky = productos.filter((el) => { return el.nombre == "Whisky" });
-let ProductoPisco = productos.filter((el) => { return el.nombre == "Pisco" });
-let ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
-let ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
-let ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo" });
+let ProductoRon = FilterProductos("Ron");
+let ProductoWhisky = FilterProductos("Whisky");
+let ProductoPisco = FilterProductos("Pisco");
+let ProductoVino = FilterProductos("Vino");
+let ProductoGin = FilterProductos("Gin");
+let ProductoBebidas = FilterProductos("Bebida").concat(FilterProductos("Hielo"));
 
 
 
@@ -109,8 +113,8 @@ function Textolista(el) {
     return TextoLista
 }
 // FUNCION NUEVO ITEM
-function ItemNew(array, object) {
-
+async function ItemNew(array, object) {
+    await array;
     array.forEach((el) => {
         if (object.nombre == Textolista(el)) {
             NewItem = new Item(el, object.cantidad);
@@ -118,7 +122,8 @@ function ItemNew(array, object) {
     })
 }
 // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
-function ListaProductos(array, j) {
+async function ListaProductos(array, j) {
+    await array;
     productoscard.innerHTML = "";
     array.forEach((el, index) => {
         Textolista(el);
@@ -214,7 +219,7 @@ FiltroProducto4.addEventListener('click', () => { ListaProductos(ProductoPisco, 
 FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 14) });
 FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
-FiltroProducto8.addEventListener('click', () => { ListaProductos(ProductosPromociones,33)});
+FiltroProducto8.addEventListener('click', () => { ListaProductos(TraerDatos("JSON/promociones.json",ProductosPromociones),33)});
 
 // EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {
@@ -234,7 +239,8 @@ BtnCart.addEventListener('click', () => {
 })
 
 // EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
-productList.addEventListener(`click`, e => {
+productList.addEventListener(`click`, async (e) => {
+    
 
     if (e.target.classList.contains(`btn-add-cart`)) {
         const item = e.target.parentElement;
@@ -244,8 +250,8 @@ productList.addEventListener(`click`, e => {
             precio: item.querySelector(`span`).textContent,
         };
 
-        ItemNew(productos, InfoCart);
-        ItemNew(ProductosPromociones, InfoCart);
+        await ItemNew(productos, InfoCart);
+        await ItemNew(ProductosPromociones, InfoCart);
 
         const Duplicate = AllProducts.some(item => item.nombre === InfoCart.nombre);
 

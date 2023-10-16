@@ -8,7 +8,6 @@ const ContainerCarrito = document.querySelector(`.cart__list`);
 let productoscard = document.querySelector(`#main__listproducts`);
 let countProducts = document.querySelector(`#cart__countproducts`);
 
-
 // VARIABLES GENERALES
 let TextoLista = "";
 let NewItem = {};
@@ -25,28 +24,26 @@ let ProductoVino = [];
 let ProductoGin = [];
 let ProductoBebidas =[];
 
-// FUNCION FETCH PARA BASE DE DATOS
+// FUNCION FETCH PARA BASE DE DATOS PRODUCOTS
 async function TraerDatosProductos(){
-    fetch("JSON/productos.json")
-  .then((response) =>{
+    const response = await fetch("JSON/productos.json");
     if(response.ok){
-        return response.json();
-    }
-  })
-  .then((lista) => {
-    productos=lista;
-    ListaProductos(productos,0);
+      productos =  await response.json();
+
+      ListaProductos(productos,0);
     
-    ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
-    ProductoWhisky= productos.filter((el) => { return el.nombre == "Whisky" });
-    ProductoPisco = productos.filter((el) => { return el.nombre == "Pisco" });
-    ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
-    ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
-    ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo"});
-    localStorage.setItem("Productos", JSON.stringify(productos));
-  })
+      ProductoRon = productos.filter((el) => { return el.nombre == "Ron" });
+      ProductoWhisky= productos.filter((el) => { return el.nombre == "Whisky" });
+      ProductoPisco = productos.filter((el) => { return el.nombre == "Pisco" });
+      ProductoVino = productos.filter((el) => { return el.nombre == "Vino" });
+      ProductoGin = productos.filter((el) => { return el.nombre == "Gin" });
+      ProductoBebidas = productos.filter((el) => { return el.nombre == "Bebida" || el.nombre == "Hielo"});
+
+      localStorage.setItem("Productos", JSON.stringify(productos));
+    }   
 }
 
+// FUNCION FETCH PARA BASE DE DATOS PROMOCIONES
 async function TraerDatosPromociones(){
     fetch("JSON/promociones.json")
   .then((response) =>{
@@ -70,6 +67,7 @@ function Textolista(el) {
         : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
     return TextoLista
 }
+
 // FUNCION NUEVO ITEM
 function ItemNew(array, object) {
     array.forEach((el) => {
@@ -78,22 +76,23 @@ function ItemNew(array, object) {
         }
     })
 }
-// // FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
+
+// FUNCION PARA DESGLOSAR LOS PRODUCTOS EN HTML
 async function ListaProductos(array, j) {
     await array;
     productoscard.innerHTML = "";
     array.forEach((el, index) => {
         Textolista(el);
         productoscard.innerHTML = productoscard.innerHTML + `
-        <div class="card m-2 productos__card" style="width: 18rem;">
-            <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${TextoLista}</h5>
-                <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
-                <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
-            </div>
-        </div>
-        `;
+          <div class="card m-2 productos__card" style="width: 18rem;">
+              <img src="./IMG/imagen${index + j}.webp" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">${TextoLista}</h5>
+                  <p class="card-text">Precio: <span>$${el.precio}.00<span/></p>
+                  <button type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-5">Agregar</button>
+              </div>
+          </div>
+          `;
     });
 }
 
@@ -105,7 +104,7 @@ if (AllProducts.length == 0) {
     `;
 };
 
-// FUNCION SHOWCART
+// FUNCION SHOWCART DESGLOSAR CARRITO EN CAJA LATERAL
 const ShowCart = () => {
     if (AllProducts.length == 0) {
         CartTotal.innerHTML = `
@@ -119,28 +118,26 @@ const ShowCart = () => {
         ContainerCarrito.innerHTML = ``;
         AllProducts.forEach(e => {
             ContainerCarrito.innerHTML = ContainerCarrito.innerHTML + `
-                <div class="cart__product">
-                    <div class="cartproduct__info">
-                        <span class="cartproduct__quantity">${e.cantidad}</span>
-                        <p class="cartproduct__title">${e.nombre}</p>
-                        <span class="cartproduct__price">${e.precio}</span>
-                    </div>
-
-
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="cartproduct__icon">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </div>
-                `;
+            <div class="cart__product">
+              <div class="cartproduct__info">
+                  <span class="cartproduct__quantity">${e.cantidad}</span>
+                  <p class="cartproduct__title">${e.nombre}</p>
+                  <span class="cartproduct__price">${e.precio}</span>
+              </div>
+              <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="cartproduct__icon">
+                  <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </div>
+            `;  
             Total = Total + parseInt(e.precio.slice(1) * e.cantidad);
             TotalCantidad = TotalCantidad + e.cantidad;
         })
@@ -178,7 +175,9 @@ FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
 
-// // EVENTO KEYUP FILTRO POR INPUT TEXT 
+
+
+// EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {
 
     if (e.target.matches(`#nav__search`)) {
@@ -190,15 +189,14 @@ document.addEventListener('keyup', e => {
     }
 })
 
-// // EVENTO CLICK DESGLOSAR CARRITO
+// EVENTO CLICK DESGLOSAR CARRITO
 BtnCart.addEventListener('click', () => {
     CartContent.classList.toggle('cart__content--hidden')
 })
 
-// // EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
+// EVENTO AGREGAR ITEM AL CARRITO Y/O ACTUALIZAR CANTIDAD
 productList.addEventListener(`click`, (e) => {
     
-
     if (e.target.classList.contains(`btn-add-cart`)) {
         const item = e.target.parentElement;
         const InfoCart = {
@@ -247,8 +245,7 @@ productList.addEventListener(`click`, (e) => {
 }
 )
 
-
-// // EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
+// EVENTO ELIMINAR ITEM DEL CARRITO HACIENDO CLICK EN "X"
 rowProduct.addEventListener('click', e => {
     if (e.target.classList.contains('cartproduct__icon')) {
         const item = e.target.parentElement;

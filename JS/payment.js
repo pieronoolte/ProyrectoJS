@@ -204,33 +204,33 @@ ConfirmarCompra.addEventListener('click', () => {
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
     console.log(InfoCompra);
-    sendmail();
     setTimeout(() => {
     $('#modalsuccess').modal('show'); 
     }, 500)
-    setTimeout(() => {
-      Atribute = 0;
-      sessionStorage.clear();
-      window.location.href = "../index.html";
-    }, 3000)
+    // setTimeout(() => {
+    //   Atribute = 0;
+    //   sessionStorage.clear();
+    //   window.location.href = "../index.html";
+    // }, 3000)
   }
 })
 
-function sendmail() {
-  (function () {
-      emailjs.init("_-4vKucqdsqorz19Y");
-  })();
+// API EMAILJS
+// function sendmail() {
+//   (function () {
+//       emailjs.init("_-4vKucqdsqorz19Y");
+//   })();
 
-  let params = {
-      sendername: document.querySelector("#inputPassword4").value,
-      subject: document.querySelector("#validationCustom01").value
-  };
+//   let params = {
+//       sendername: document.querySelector("#inputPassword4").value,
+//       subject: document.querySelector("#validationCustom01").value
+//   };
 
-  let serviceID = "service_cz04fpb";
-  let templateID = "template_vcia41s";
+//   let serviceID = "service_cz04fpb";
+//   let templateID = "template_vcia41s";
 
-  emailjs.send(serviceID, templateID, params)
-  .then( response => {
-      console.log(response);
-  })
-}
+//   emailjs.send(serviceID, templateID, params)
+//   .then( response => {
+//       console.log(response);
+//   })
+// }

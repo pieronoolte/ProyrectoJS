@@ -3,9 +3,9 @@ class Producto {
     contenido;
     marca;
     precio;
-    stock;
 
-    constructor(nombre, contenido, marca, precio, stock) {
+
+    constructor(nombre, contenido, marca, precio) {
         this.nombre = nombre;
         this.contenido = contenido;
         this.marca = marca;

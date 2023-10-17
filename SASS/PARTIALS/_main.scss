@@ -1,0 +1,49 @@
+//ESTILOS MAIN
+#main__listproducts {
+    @include dflex(space-between, 1%, 1%, 1%, 1%);
+
+    .productos__card {
+        figure {
+            overflow: hidden;
+        }
+
+        img {
+            width: 90%;
+            margin-top: 1%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        &:hover {
+            box-shadow: inset $color-tertiary 0px 5px 10px;
+        }
+
+        &:hover h5 {
+            animation: showCategory 800ms linear;
+        }
+    }
+}
+
+.card__filtro {
+    display: none;
+}
+
+.pay__total {
+    @include fontwsm(900, 20px, 0%, 0%);
+}
+
+.cart-empty {
+    padding: 20px;
+    text-align: center;
+}
+
+#pay__btn {
+    a {
+        text-decoration: none;
+        color: $color-primary;
+    }
+
+    &:hover a {
+        color: $color-secondary;
+    }
+}

@@ -1,0 +1,126 @@
+// ESTILOS NAVEGACION
+#nav {
+    @include dflex(space-between, 1%, 1%, 1%, 1%);
+
+    #nav__list {
+        width: 60%
+    }
+}
+
+#nav__label {
+    @include shadowbox($color-tertiary, 8%, inset 0 0 5px $color-secondary 0 0 10px $color-secondary);
+    width: 175px;
+    overflow: hidden;
+    border: 1px solid $color-primary;
+    animation: ParpadearBox 4s infinite backwards;
+
+    a {
+        color: $color-secondary;
+        margin: 0 auto;
+        text-shadow: 0 0 5px $color-secondary, 0 0 15px $color-secondary, 0 0 30px $color-secondary, 0 0 50px $color-secondary;
+        animation: Letrero 4s infinite backwards;
+    }
+}
+
+.nav__cart {
+    position: relative;
+
+    .cart__count {
+        @include dflexja(center,center);
+        @include shadowbox($color-primary, 20%, none);
+        position: absolute;
+        top: 40%;
+        right: 25%;
+        color: $color-secondary;
+        width: 20px;
+        height: 20px;
+    }
+
+    #cart__countproducts {
+        font-size: 15px;
+    }
+
+    .cart__content {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        @include shadowbox($color-secondary, 10px, 0 10px 20px $color-tertiary);
+        width: 400px;
+        z-index: 1;
+    }
+
+}
+
+.cart__product {
+    @include dflexja(center,space-around);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-bottom: 1px solid $color-tertiary;
+
+    .cartproduct__info {
+        display: flex;
+        justify-content: space-between;
+        flex: 0.8;
+    }
+
+    .cartproduct__quantity {
+        @include fontwsm(400, 18px, 0%, 0%);
+    }
+
+    .cartproduct__title {
+        @include fontwsm(400, 15px, 4%, 0%);
+        text-align: start;
+        width: 200px;
+    }
+
+    .cartproduct__price {
+        @include fontwsm(700, 18px, 5%, 0%);
+    }
+
+    .cartproduct__sub {
+        @include fontwsm(700, 18px, 10%, 0%);
+    }
+}
+
+.cartproduct__quantity--title {
+    @include fontwsm(700, 18px, -7%, 0%);
+}
+
+.cartproduct__title--title {
+    @include fontwsm(700, 18px, 5%, 0%);
+}
+
+.cartproduct__price--title {
+    @include fontwsm(700, 18px, 23%, -5%);
+}
+
+.cartproduct__sub--title {
+    @include fontwsm(700, 18px, 15%, -2%);
+}
+
+.cartproduct__icon {
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+        stroke: red;
+        cursor: pointer;
+    }
+}
+
+.cart__content--hidden {
+    display: none;
+}
+
+.cart__total {
+    @include dflexja(center,center);
+    padding: 20px 0;
+    gap: 20px;
+
+    h3 {
+        @include fontwsm(700, 20px, 0%, 0%);
+    }
+}

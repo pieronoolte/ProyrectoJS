@@ -1,0 +1,121 @@
+// ESTILOS PAGE PAGO
+
+// ESTILOS FACTURA
+#main__paymentform {
+    padding: 30px;
+}
+
+#main__factura {
+    @include estructurebox($color-secondary, $color-primary, 800px, 0 auto, 10%, 5%, 0%, 0%);
+   
+    .cartproduct__firstrow {
+        @include fontwsm(700, 22px, 10px, 0%);
+    }
+
+    .cart__list--Factura {
+        @include dflexja(space-around,center);
+        padding: 20px 0;
+        gap: 20px;
+
+        h3 {
+            @include fontwsm(700, 20px, 0%, 0%);
+        }
+    }
+}
+
+#main__form {
+    @include estructurebox($color-secondary, $color-primary, 800px, 0 auto, 10%, 0%, 5%, 20px);
+}
+
+.cartproduct__quantity--title {
+    @include fontwsm(700, 18px, -7%, 0%);
+}
+
+.cartproduct__title--title {
+    @include fontwsm(700, 18px, 5%, 0%);
+}
+
+.cartproduct__price--title {
+    @include fontwsm(700, 18px, 23%, -5%);
+}
+
+.cartproduct__sub--title {
+    @include fontwsm(700, 18px, 15%, -2%);
+}
+
+.cartptoduct__img{
+    margin-left: 5%;
+}
+
+#main__pay {
+    @include estructurebox($color-secondary, $color-primary, 800px, 0 auto, 5%, 5%, 0%, 20px);
+    padding-top: 10px;
+}
+
+.main__buttons {
+    @include dflex(end, 0%, 0%, 0%, 0%);
+}
+
+.main__buttons--cliente {
+    @include dflex(end, 0%, 3%, 0%, 0%);
+    
+}
+
+#btn-add-cart--form {
+    a {
+        text-decoration: none;
+        color: $color-primary;
+    }
+
+    &:hover a {
+        color: $color-secondary;
+    }
+}
+
+.btn__ConfirmDatos {
+    background: $color-primary;
+    color: $color-secondary;
+
+    &:hover {
+        background: $color-primary;
+        color: $color-secondary;
+    }
+}
+
+// CHECK CSS IMPORT
+.wrapper {
+    @include dflexja(center,center);
+    height: 50px;
+    width: 20%;
+    background-color: inherit;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: $color-primary;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: $color-primary;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 1px 4px $color-primary;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}

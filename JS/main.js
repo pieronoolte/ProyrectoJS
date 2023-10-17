@@ -45,17 +45,12 @@ async function TraerDatosProductos(){
 
 // FUNCION FETCH PARA BASE DE DATOS PROMOCIONES
 async function TraerDatosPromociones(){
-    fetch("JSON/promociones.json")
-  .then((response) =>{
+    const response = await fetch("JSON/promociones.json")
     if(response.ok){
-        return response.json();
+      ProductosPromociones= await response.json();
+      ListaProductos(ProductosPromociones,33);
+      localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
     }
-  })
-  .then((lista) => {
-    ProductosPromociones=lista;
-    ListaProductos(ProductosPromociones,33);
-    localStorage.setItem("Promociones", JSON.stringify(ProductosPromociones));
-  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {TraerDatosProductos()});

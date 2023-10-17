@@ -1,0 +1,112 @@
+// VARIABLES
+$color-primary: #6c757d;
+$color-secondary: #ffffff;
+$color-tertiary:#000000ab;
+
+// MIXIN
+@mixin dflex($justify, $value1, $value2, $value3, $value4) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    margin-left: $value1;
+    margin-top: $value2;
+    margin-left: $value3;
+    margin-right: $value4;
+}
+
+@mixin dflexja($justify,$align){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin fontwsm($weight, $size, $value1, $value2){
+    font-weight: $weight;
+    font-size: $size;
+    margin-left: $value1;
+    margin-right: $value2;
+}
+
+@mixin estructurebox($value1, $value2, $value3, $value4, $value5, $value6, $value7, $value8){
+    background: $value1;
+    color: $value2;
+    max-width: $value3;
+    margin: $value4;
+    border-radius: $value5;
+    margin-top: $value6;
+    margin-bottom: $value7;
+    padding: $value8;
+}
+
+@mixin shadowbox($value1, $value2, $value3){
+    background: $value1;
+    border-radius: $value2;
+    box-shadow: $value3;
+}
+
+// KEYFRAMES
+@keyframes showCategory {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes Parpadear {
+    to {
+        color: $color-primary;
+    }
+}
+
+@keyframes ParpadearBox {
+    to {
+        border: 2px solid $color-secondary;
+    }
+}
+
+@keyframes Letrero {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 100%;
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px inherit;
+    }
+}
+
+// ESTILOS GENERALES
+
+body {
+    background: $color-tertiary;
+    max-width: 1000px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}

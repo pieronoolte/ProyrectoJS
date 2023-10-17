@@ -10,12 +10,12 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <title>COMPRA</title>
+    <title>ALL DAY/ ALL NIGHT</title>
     <meta name="description" content="tienda Online de bebidas alcoholicas 24 horas con delivery">
     <meta name="keywords" content="LICOR, 24HORAS, DELIVERY, BEBIDAS ALCOHOLICAS, TIENDA ONLINE">
 </head>
 
-<body>  
+<body>
     <header>
         <!-- Inicio de la Cabecera -->
         <div class="header__container">
@@ -34,23 +34,25 @@
                     <form id=form__datos class="row g-3 needs-validation" novalidate>
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label"></label>
-                            <input type="text" class="form-control" id="validationCustom01"
+                            <input type="text" class="form-control form__nombre" id="validationCustom01"
                                 placeholder="Nombres y Apellidos" required>
-                        
+
                         </div>
                         <div class="col-md-6">
                             <label for="inputPassword4" class="form-label"></label>
-                            <input type="email" class="form-control" id="inputPassword4" placeholder="@Email" required>
-                    
+                            <input type="email" class="form-control form__email" id="inputPassword4"
+                                placeholder="@Email" required>
+
                         </div>
                         <div class="col-md-6 mt-1">
                             <label for="inputEmail4" class="form-label"></label>
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="Telefono" required>
+                            <input type="number" class="form-control form__cell" id="inputEmail4" placeholder="Telefono"
+                                required>
                         </div>
                         <div class="col-md-4 mt-1">
                             <label for="inputState" class="form-label"></label>
-                            <select id="inputState" class="form-select" required>
-                                <option value="">Distrito</option>
+                            <select id="inputState" class="form-select form__distrito" required>
+                                <option value="" selected>Distrito</option>
                                 <option>La Molina</option>
                                 <option>Santa Beatriz</option>
                                 <option>San Borja</option>
@@ -60,31 +62,26 @@
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control form__direccion" id="inputAddress"
+                                placeholder="1234 Main St">
                         </div>
                         <div class="col-12">
                             <label for="inputAddress2" class="form-label">Referencia</label>
-                            <input type="text" class="form-control" id="inputAddress2"
+                            <input type="text" class="form-control form__referencia" id="inputAddress2"
                                 placeholder="Apartment, studio, or floor">
                         </div>
 
                         <div class="main__buttons--cliente btndatos">
                             <button type="reset"
-                                class="btn-add-cart--form  btn__refresh btn btn-outline-secondary mx-2 px-5"
-                                >Refrescar</button>
+                                class="btn-add-cart--form  btn__refresh btn btn-outline-secondary mx-2 px-5">Refrescar</button>
 
                             <button type="submit" class="btn btn-outline-secondary mx-2 px-5"
                                 id="liveToastBtn">Confirmar Datos</button>
-                            
 
                         </div>
+                    </form>
                 </div>
-
-
-
-                </form>
             </div>
-
             <!-- Fin Datos del Cliente -->
             <!-- Inicio Factura -->
             <div id="main__factura" class="accordion accordion-flush" id="accordionFlushExample">
@@ -123,7 +120,7 @@
                         <div class="col-md-4 mx-5">
                             <label for="inputState" class="form-label"></label>
                             <select id="inputState" class="form-select" required>
-                                <option  value="" selected>Tipo de Pago</option>
+                                <option value="" selected>Tipo de Pago</option>
                                 <option>Efectivo</option>
                                 <option>Transferencia</option>
                                 <option>POS</option>
@@ -143,52 +140,40 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header p-5">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deseas Modificar tu Compra?</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deseas Modificar tu
+                                                Compra?</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary"><a href="../index.html">Volver</a></button>
+                                            <button type="button" class="btn btn-primary"><a
+                                                    href="../index.html">Volver</a></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-        
-                            <button type="submit" class="btn-add-cart--form btn btn-outline-secondary mx-2 px-5"
-                                 id="liveToastBtnTwo" data-bs-toggle="modal" data-bs-target="#modalsuccess">Confirmar
+
+                            <button type="submit" class="card__filtro btn-add-cart--form btn btn-outline-secondary mx-2 px-5"
+                                id="liveToastBtnTwo">Confirmar
                                 Compra</button>
-        
-                            <!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                                <div id="liveToastTwo" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="toast-header d-flex justify-content-start align-items-center">
-                                        <div class="wrapper">
-                                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                                            </svg>
-                                        </div>
-                                        <strong class="me-auto">Registro de Compra Correcta!</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                            aria-label="Close"></button>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <div class="modal" id="modalsuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="modalsuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <div class="wrapper">
-                                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 52 52">
+                                                    <circle class="checkmark__circle" cx="26" cy="26" r="25"
+                                                        fill="none" />
                                                     <path class="checkmark__check" fill="none"
                                                         d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                                                 </svg>
                                             </div>
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Gracias por tu compra! </br>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Gracias por tu compra!
+                                                </br>
                                                 Tu pedido está en camino!
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -197,24 +182,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-
+                        </div>
                     </form>
                 </div>
-                
             </div>
             <!-- Fin Datos de Compra -->
-    </main>div>
     </main>
-    
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../JS/item.js" text="text/javascript"></script>
-    <script src="../JS/producto.js" text="text/javascript"></script>
-    <script src="../JS/pagepago.js" text="text/javascript"></script>
+    <script src="../JS/CLASSES/item.js" text="text/javascript"></script>
+    <script src="../JS/CLASSES/producto.js" text="text/javascript"></script>
+    <script src="../JS/CLASSES/cliente.js" text="text/javascript"></script>
+    <script src="../JS/payment.js" text="text/javascript"></script>
 </body>
 
 </html>

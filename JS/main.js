@@ -24,7 +24,7 @@ let ProductoVino = [];
 let ProductoGin = [];
 let ProductoBebidas =[];
 
-// FUNCION FETCH PARA BASE DE DATOS PRODUCOTS
+//BASE DE DATOS PRODUCTOS Y FILTROS
 async function TraerDatosProductos(){
     const response = await fetch("JSON/productos.json");
     if(response.ok){
@@ -43,7 +43,7 @@ async function TraerDatosProductos(){
     }   
 }
 
-// FUNCION FETCH PARA BASE DE DATOS PROMOCIONES
+// BASE DE DATOS PROMOCIONES
 async function TraerDatosPromociones(){
     const response = await fetch("JSON/promociones.json")
     if(response.ok){
@@ -55,7 +55,7 @@ async function TraerDatosPromociones(){
 
 document.addEventListener('DOMContentLoaded', () => {TraerDatosProductos()});
 
-// // FUNCION TEXTOLISTA
+
 function Textolista(el) {
     (el.contenido >= 1000)
         ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
@@ -63,7 +63,7 @@ function Textolista(el) {
     return TextoLista
 }
 
-// FUNCION NUEVO ITEM
+
 function ItemNew(array, object) {
     array.forEach((el) => {
         if (object.nombre == Textolista(el)) {
@@ -91,7 +91,7 @@ async function ListaProductos(array, j) {
     });
 }
 
-// FUNCION VERIFICACION LENGTH
+
 if (AllProducts.length == 0) {
     CartTotal.innerHTML = `
     <h3>El carrito esta vacio</h3>

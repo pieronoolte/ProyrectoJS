@@ -60,8 +60,8 @@ const ShowCart = () => {
 };
 
 
-// Cart = JSON.parse(sessionStorage.getItem("Cart"));
-Cart = JSON.parse('[{"producto":{"nombre":"Ron","contenido":750,"marca":"Flor de caña","precio":34,"stock":22},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa 12 años","precio":42,"stock":20},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"El abuelo","precio":32,"stock":24},"cantidad":1},{"producto":{"nombre":"Ron","contenido":1750,"marca":"Flor de caña","precio":62,"stock":18},"cantidad":1},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa XO","precio":60,"stock":30},"cantidad":1}]');
+Cart = JSON.parse(sessionStorage.getItem("Cart"));
+// Cart = JSON.parse('[{"producto":{"nombre":"Ron","contenido":750,"marca":"Flor de caña","precio":34,"stock":22},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa 12 años","precio":42,"stock":20},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"El abuelo","precio":32,"stock":24},"cantidad":1},{"producto":{"nombre":"Ron","contenido":1750,"marca":"Flor de caña","precio":62,"stock":18},"cantidad":1},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa XO","precio":60,"stock":30},"cantidad":1}]');
 document.addEventListener('DOMContentLoaded', () => { ShowCart() });
 
 // BOOTSTRAP FORM VALIDATION IMPORT
@@ -204,6 +204,7 @@ ConfirmarCompra.addEventListener('click', () => {
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
     console.log(InfoCompra);
+    sendmail();
     setTimeout(() => {
     $('#modalsuccess').modal('show'); 
     }, 500)
@@ -215,4 +216,21 @@ ConfirmarCompra.addEventListener('click', () => {
   }
 })
 
+function sendmail() {
+  (function () {
+      emailjs.init("_-4vKucqdsqorz19Y");
+  })();
 
+  let params = {
+      sendername: document.querySelector("#inputPassword4").value,
+      subject: document.querySelector("#validationCustom01").value
+  };
+
+  let serviceID = "service_cz04fpb";
+  let templateID = "template_vcia41s";
+
+  emailjs.send(serviceID, templateID, params)
+  .then( response => {
+      console.log(response);
+  })
+}

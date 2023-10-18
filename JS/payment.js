@@ -14,6 +14,7 @@ const MainFactura = document.querySelector(`#main__factura`);
 let TextoLista = "";
 let TextoToast = "";
 let Atribute = 0;
+let TextoMessage = `FACTURA ALL DAY/ ALL NIGHT \n`
 //ARRAYS
 let productos = [];
 let ProductosPromociones = [];
@@ -54,12 +55,19 @@ const ShowCart = () => {
       </span>
     </div>`;
     Total = Total + parseInt(e.producto.precio * e.cantidad);
+    TextoMessage += `
+                    Cantidad: ${e.cantidad} \n
+                    Producto: ${TextoLista} \n
+                    Precio: $${e.producto.precio} \n
+                    Subtotal: $${e.cantidad * e.producto.precio} \n
+                    `;
   })
 
   CartTotal.innerHTML = `
     <h3>FACTURA ALL DAY/ ALL NIGHT</h3>
     <span class="total-pagar">Total: $${Total.toFixed(2)}</span>
       `;
+  TextoMessage += `Total: $${Total.toFixed(2)}`;
 };
 
 
@@ -232,7 +240,7 @@ function sendmail() {
   let params = {
       sendername: document.querySelector("#inputPassword4").value,
       subject: document.querySelector("#validationCustom01").value,
-      message: MainFactura.innerHTML
+      message: TextoMessage
   };
 
   let serviceID = "service_cz04fpb";
@@ -241,5 +249,5 @@ function sendmail() {
   emailjs.send(serviceID, templateID, params)
   .then( response => {
       console.log(response);
-      console.log("hola");
+      console.log("Mensaje Enviado");
   })};

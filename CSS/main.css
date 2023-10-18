@@ -581,6 +581,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: space-around;
+    width: 350px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5px;
@@ -600,7 +601,7 @@ footer {
   }
   .cart__product .cartproduct__title {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 13.5px;
     margin-left: 25%;
     margin-right: 0%;
     text-align: start;

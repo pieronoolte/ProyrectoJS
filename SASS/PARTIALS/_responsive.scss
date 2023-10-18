@@ -39,6 +39,7 @@
 
     .cart__product {
         @include dflexja(center, space-around);
+        width: 350px;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 5px;
@@ -57,7 +58,7 @@
         }
 
         .cartproduct__title {
-            @include fontwsm(500, 12px, 25%, 0%);
+            @include fontwsm(500, 13.5px, 25%, 0%);
             text-align: start;
         }
 

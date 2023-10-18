@@ -226,7 +226,7 @@ ConfirmarCompra.addEventListener('click', () => {
   }
 })
 
-//API EMAILJS
+//API EMAILJS: A SU CORREO ELECTRÓNICO, LLEGARÁ UN COMPROBANTE DE PAGO
 function sendmail() {
   (function () {
       emailjs.init("_-4vKucqdsqorz19Y");

@@ -20,6 +20,7 @@ let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
 let InfoCliente = {};
+let HistorialClientes = [];
 
 
 
@@ -203,10 +204,13 @@ ConfirmarCompra.addEventListener('click', () => {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
     let InfoCompra =[];
+    localStorage.removeItem("HistorialClientes");
     TextoToast = "Registro de Compra Correcta"
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
     console.log(InfoCompra);
+    HistorialClientes =[...HistorialClientes,InfoCompra];
+    localStorage.setItem("HistorialClientes", JSON.stringify(HistorialClientes));
     sendmail();
     setTimeout(() => {
     $('#modalsuccess').modal('show'); 

@@ -1,6 +1,6 @@
 //ESTILOS MAIN
 #main__listproducts {
-    @include dflex(space-between, 1%, 1%, 1%, 1%);
+    @include dflex(space-around, 1%, 1%, 1%, 1%);
 
     .productos__card {
         figure {

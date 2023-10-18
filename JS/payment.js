@@ -9,6 +9,7 @@ const BtnDatos = document.querySelector(`.btndatos`);
 const BtnDatosTwo = document.querySelector(`.btndatostwo`);
 const FormDatos = document.querySelector(`#form__datos`);
 const FormCompra = document.querySelector(`#form__compra`);
+const MainFactura = document.querySelector(`#main__factura`);
 // VARIABLES GENERALES
 let TextoLista = "";
 let TextoToast = "";
@@ -19,7 +20,8 @@ let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
 let InfoCliente = {};
-let InfoCompra =[];
+
+
 
 //FUNCION SHOWCART DESGLOSAR FACTURA POR ITEM
 const ShowCart = () => {
@@ -44,7 +46,7 @@ const ShowCart = () => {
         <span class="cartproduct__quantity">${e.cantidad}</span>
         <p class="cartproduct__title">${TextoLista}</p>
         <span class="cartproduct__price">$${e.producto.precio}.00</span>
-        <span class="cartproduct__sub"">$${e.cantidad * e.producto.precio}.00</span>
+        <span class="cartproduct__sub">$${e.cantidad * e.producto.precio}.00</span>
       </div>
       <span class="material-symbols-outlined cartptoduct__img">
       add_shopping_cart
@@ -200,6 +202,7 @@ ConfirmarCompra.addEventListener('click', () => {
   if (FormCompra.checkValidity() && Atribute == 1) {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
+    let InfoCompra =[];
     TextoToast = "Registro de Compra Correcta"
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
@@ -216,7 +219,7 @@ ConfirmarCompra.addEventListener('click', () => {
   }
 })
 
-// API EMAILJS
+//API EMAILJS
 function sendmail() {
   (function () {
       emailjs.init("_-4vKucqdsqorz19Y");
@@ -224,7 +227,8 @@ function sendmail() {
 
   let params = {
       sendername: document.querySelector("#inputPassword4").value,
-      subject: document.querySelector("#validationCustom01").value
+      subject: document.querySelector("#validationCustom01").value,
+      message: MainFactura.innerHTML
   };
 
   let serviceID = "service_cz04fpb";

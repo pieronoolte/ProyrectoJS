@@ -1,6 +1,6 @@
 // ESTILOS NAVEGACION
 #nav {
-    @include dflex(space-between, 1%, 1%, 1%, 1%);
+    @include dflex(space-around, 1%, 1%, 1%, 1%);
 
     #nav__list {
         width: 60%
@@ -10,6 +10,8 @@
 #nav__label {
     @include shadowbox($color-tertiary, 8%, inset 0 0 5px $color-secondary 0 0 10px $color-secondary);
     width: 175px;
+    height: 35px;
+    margin-bottom: 1%;
     overflow: hidden;
     border: 1px solid $color-primary;
     animation: ParpadearBox 4s infinite backwards;
@@ -22,6 +24,9 @@
     }
 }
 
+#nav__filtrar{
+    margin-left: 5%;
+}
 .nav__cart {
     position: relative;
 

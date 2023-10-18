@@ -9,7 +9,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../CSS/main.css">
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="img/x-icon" href="../IMG/logotipo.png">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <title>ALL DAY/ ALL NIGHT</title>
     <meta name="description" content="tienda Online de bebidas alcoholicas 24 horas con delivery">
@@ -29,7 +29,7 @@
             <!-- Inicio Datos del Cliente -->
             <div id="main__form">
                 <div>
-                    <h2>Datos de Cliente</h2>
+                    <h2 class="text-black">Datos del Cliente</h2>
                 </div>
                 <div>
                     <form id=form__datos class="row g-3 needs-validation" novalidate>
@@ -105,11 +105,11 @@
             <!-- Inicio Datos de Compra -->
             <div id="main__pay">
                 <div class="mb-3">
-                    <h2>Datos de Pago</h2>
+                    <h2 class="text-black">Datos de Pago</h2>
                 </div>
                 <div>
                     <form id="form__compra" class="row g-3 needs-validation" novalidate>
-                        <div class="col-md-4 mx-5">
+                        <div class="col-md-5 mx-2">
                             <label for="inputState" class="form-label"></label>
                             <select id="inputState" class="form-select" required>
                                 <option value="" selected>Tipo de Delivery</option>
@@ -118,7 +118,7 @@
                                 <option>Delivery Classic</option>
                             </select>
                         </div>
-                        <div class="col-md-4 mx-5">
+                        <div class="col-md-5 mx-2">
                             <label for="inputState" class="form-label"></label>
                             <select id="inputState" class="form-select" required>
                                 <option value="" selected>Tipo de Pago</option>
@@ -127,7 +127,7 @@
                                 <option>POS</option>
                             </select>
                         </div>
-                        <div class="col-md-10 ms-5 p-2 mt-1">
+                        <div class="col-md-12 p-2 mt-1">
                             <label for="inputEmail4" class="form-label"></label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                 placeholder="Sugerencias.."></textarea>
@@ -157,7 +157,7 @@
                             </div>
 
                             <button type="submit"
-                                class="card__filtro btn-add-cart--form btn btn-outline-secondary mx-2 px-5"
+                                class="card__filtro btn btn-outline-secondary mx-2 px-5"
                                 id="liveToastBtnTwo">Confirmar
                                 Compra</button>
                             <div class="modal fade" id="modalsuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -190,7 +190,9 @@
             </div>
             <!-- Fin Datos de Compra -->
     </main>
-
+    <footer>
+        Developed by Piero Noolte Web <span>®</span>
+    </footer>
     <!-- <script>
         function sendmail() {
             (function () {

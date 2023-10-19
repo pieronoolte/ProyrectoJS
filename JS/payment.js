@@ -22,7 +22,7 @@ let AllProducts = [];
 let Cart = [];
 let InfoCliente = {};
 let HistorialClientes = [];
-
+HistorialClientes =JSON.parse(localStorage.getItem("HistorialClientes"));
 
 
 //FUNCION SHOWCART DESGLOSAR FACTURA POR ITEM
@@ -207,7 +207,6 @@ ConfirmarCompra.addEventListener('click', () => {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
     let InfoCompra =[];
-    HistorialClientes =JSON.parse(localStorage.getItem("HistorialClientes"));
     TextoToast = "Registro de Compra Correcta"
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];

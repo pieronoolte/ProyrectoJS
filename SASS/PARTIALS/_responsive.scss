@@ -36,10 +36,23 @@
     .cartproduct__price--title {
         display: none;
     }
+    
+    .nav__cart {
+        position: relative;
+
+        .cart__content {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            @include shadowbox($color-secondary, 10px, 0 10px 20px $color-tertiary);
+            width: 350px;
+            z-index: 1;
+        }
+    
+    }
 
     .cart__product {
         @include dflexja(center, space-around);
-        width: 350px;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 5px;
@@ -84,6 +97,15 @@
     }
 }
 
+.cart__total {
+    @include dflexja(center,center);
+    padding: 15px 0;
+    gap: 20px;
+
+    h3 {
+        @include fontwsm(600, 15px, 0%, 0%);
+    }
+}
 
 
 @media(min-width: 550px) and (max-width: 650px) {

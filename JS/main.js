@@ -94,8 +94,8 @@ async function ListaProductos(array, j) {
 
 if (AllProducts.length == 0) {
     CartTotal.innerHTML = `
-    <h3>El carrito esta vacio</h3>
-    <span class="total-pagar"></span>
+    <h3>El carrito esta vacio
+    <span class="total-pagar"></span></h3>
     `;
 };
 
@@ -138,8 +138,8 @@ const ShowCart = () => {
         })
 
         CartTotal.innerHTML = `
-        <h3>Total:</h3>
-        <span class="pay__total">$${Total.toFixed(2)}</span>
+        <h3>Total:
+        <span class="pay__total">$${Total.toFixed(2)}</span></h3>
         <button id="pay__btn" type="button" class="btn-add-cart btn btn-outline-secondary mx-5 px-4"><a href="PAGES/Pago.html">Pagar</a></button>
         `;
 

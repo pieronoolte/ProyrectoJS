@@ -207,7 +207,7 @@ ConfirmarCompra.addEventListener('click', () => {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
     let InfoCompra =[];
-    localStorage.removeItem("HistorialClientes");
+    // localStorage.removeItem("HistorialClientes");
     TextoToast = "Registro de Compra Correcta"
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
@@ -218,11 +218,11 @@ ConfirmarCompra.addEventListener('click', () => {
     setTimeout(() => {
     $('#modalsuccess').modal('show'); 
     }, 500)
-    // setTimeout(() => {
-    //   Atribute = 0;
-    //   sessionStorage.clear();
-    //   window.location.href = "../index.html";
-    // }, 3000)
+    setTimeout(() => {
+      Atribute = 0;
+      sessionStorage.clear();
+      window.location.href = "../index.html";
+    }, 3000)
   }
 })
 

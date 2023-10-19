@@ -36,7 +36,7 @@
     .cartproduct__price--title {
         display: none;
     }
-    
+
     .nav__cart {
         position: relative;
 
@@ -48,7 +48,7 @@
             width: 350px;
             z-index: 1;
         }
-    
+
     }
 
     .cart__product {
@@ -95,17 +95,19 @@
     .cartproduct__sub--title {
         @include fontwsm(700, 13px, 5%, 0%);
     }
-}
 
-.cart__total {
-    @include dflexja(center,center);
-    padding: 15px 0;
-    gap: 20px;
-
-    h3 {
-        @include fontwsm(600, 15px, 0%, 0%);
+    .cart__total {
+        @include dflexja(center, center);
+        padding: 15px 0;
+        gap: 20px;
+    
+        h3 {
+            @include fontwsm(600, 15px, 0%, 0%);
+        }
     }
+    
 }
+
 
 
 @media(min-width: 550px) and (max-width: 650px) {

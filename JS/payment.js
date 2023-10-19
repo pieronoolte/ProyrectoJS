@@ -21,8 +21,8 @@ let ProductosPromociones = [];
 let AllProducts = [];
 let Cart = [];
 let InfoCliente = {};
-let HistorialClientes = [];
-HistorialClientes =JSON.parse(localStorage.getItem("HistorialClientes"));
+let HistorialClientes = JSON.parse(localStorage.getItem("HistorialClientes"));
+HistorialClientes =
 
 
 //FUNCION SHOWCART DESGLOSAR FACTURA POR ITEM

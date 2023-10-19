@@ -100,12 +100,17 @@
         @include dflexja(center, center);
         padding: 15px 0;
         gap: 20px;
-    
+
         h3 {
             @include fontwsm(600, 15px, 0%, 0%);
         }
+
     }
-    
+
+    .pay__total {
+        @include fontwsm(700, 15px, 0%, 0%);
+    }
+
 }
 
 

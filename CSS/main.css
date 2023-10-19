@@ -659,6 +659,12 @@ footer {
     margin-left: 0%;
     margin-right: 0%;
   }
+  .pay__total {
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 }
 @media (min-width: 550px) and (max-width: 650px) {
   .header__container {

@@ -14,7 +14,7 @@ const MainFactura = document.querySelector(`#main__factura`);
 let TextoLista = "";
 let TextoToast = "";
 let Atribute = 0;
-let TextoMessage = `FACTURA ALL DAY/ ALL NIGHT \n`
+let TextoMessage = `FACTURA ALL DAY/ ALL NIGHT \n\n`
 //ARRAYS
 let productos = [];
 let ProductosPromociones = [];
@@ -55,7 +55,7 @@ const ShowCart = () => {
       </span>
     </div>`;
     Total = Total + parseInt(e.producto.precio * e.cantidad);
-    TextoMessage += `Cantidad: ${e.cantidad} \nProducto: ${TextoLista} \nPrecio: $${e.producto.precio} \nSubtotal: $${e.cantidad * e.producto.precio} \n`;
+    TextoMessage += `Cantidad: ${e.cantidad} \nProducto: ${TextoLista} \nPrecio: $${e.producto.precio} \nSubtotal: $${e.cantidad * e.producto.precio} \n\n`;
   })
 
   CartTotal.innerHTML = `
@@ -207,7 +207,7 @@ ConfirmarCompra.addEventListener('click', () => {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
     let InfoCompra =[];
-    // localStorage.removeItem("HistorialClientes");
+    HistorialClientes =JSON.parse(localStorage.getItem("HistorialClientes"));
     TextoToast = "Registro de Compra Correcta"
     ToastCompraInner();
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];

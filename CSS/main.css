@@ -427,7 +427,7 @@ footer {
 .cartproduct__price--title {
   font-weight: 700;
   font-size: 18px;
-  margin-left: 18%;
+  margin-left: 12%;
   margin-right: -5%;
 }
 
@@ -701,7 +701,7 @@ footer {
   .cartproduct__price--title {
     font-weight: 700;
     font-size: 15px;
-    margin-left: 18%;
+    margin-left: 8%;
     margin-right: -5%;
   }
   .cartproduct__sub--title {

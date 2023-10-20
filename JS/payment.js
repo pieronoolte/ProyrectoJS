@@ -1,6 +1,13 @@
 
 // VARIABLES DOM
 let FacturatList = document.querySelector(`.cart__list`);
+let Nombre = document.querySelector(".form__nombre");
+let Email = document.querySelector(".form__email");
+let Cell = document.querySelector(".form__cell");
+let Distrito = document.querySelector(".form__distrito");
+let Direccion = document.querySelector(".form__direccion");
+let Referencia = document.querySelector(".form__referencia");
+
 const CartTotal = document.querySelector(`.cart__total--Factura`);
 const MainPaymentForm = document.querySelector(`#main__paymentform`);
 const ConfirmarDatos = document.querySelector(`#liveToastBtn`);
@@ -22,8 +29,9 @@ let AllProducts = [];
 let Cart = [];
 let InfoCliente = {};
 let HistorialClientes = JSON.parse(localStorage.getItem("HistorialClientes"));
-HistorialClientes =
 
+Cart = JSON.parse(sessionStorage.getItem("Cart"));
+// Cart = JSON.parse('[{"producto":{"nombre":"Ron","contenido":750,"marca":"Flor de caña","precio":34,"stock":22},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa 12 años","precio":42,"stock":20},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"El abuelo","precio":32,"stock":24},"cantidad":1},{"producto":{"nombre":"Ron","contenido":1750,"marca":"Flor de caña","precio":62,"stock":18},"cantidad":1},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa XO","precio":60,"stock":30},"cantidad":1}]');
 
 //FUNCION SHOWCART DESGLOSAR FACTURA POR ITEM
 const ShowCart = () => {
@@ -41,21 +49,25 @@ const ShowCart = () => {
       </span>
     </div>`;
   Cart.forEach(e => {
-    Textolista(e.producto);
+    const {producto, cantidad} = e;
+    const {nombre, contenido, marca, precio} = producto;
+    (contenido >= 1000)
+    ? TextoLista = `${nombre} ${marca} ${(contenido / 1000).toFixed(2)}Lt`
+    : TextoLista = `${nombre} ${marca} ${contenido}ml`;
     FacturatList.innerHTML = FacturatList.innerHTML + `
     <div class="cart__product">
       <div class="cartproduct__info">
-        <span class="cartproduct__quantity">${e.cantidad}</span>
+        <span class="cartproduct__quantity">${cantidad}</span>
         <p class="cartproduct__title">${TextoLista}</p>
-        <span class="cartproduct__price">$${e.producto.precio}.00</span>
-        <span class="cartproduct__sub">$${e.cantidad * e.producto.precio}.00</span>
+        <span class="cartproduct__price">$${precio}.00</span>
+        <span class="cartproduct__sub">$${cantidad * precio}.00</span>
       </div>
       <span class="material-symbols-outlined cartptoduct__img">
       add_shopping_cart
       </span>
     </div>`;
-    Total = Total + parseInt(e.producto.precio * e.cantidad);
-    TextoMessage += `Cantidad: ${e.cantidad} \nProducto: ${TextoLista} \nPrecio: $${e.producto.precio} \nSubtotal: $${e.cantidad * e.producto.precio} \n\n`;
+    Total = Total + parseInt(precio * cantidad);
+    TextoMessage += `Cantidad: ${cantidad} \nProducto: ${TextoLista} \nPrecio: $${precio} \nSubtotal: $${cantidad * precio} \n\n`;
   })
 
   CartTotal.innerHTML = `
@@ -65,9 +77,6 @@ const ShowCart = () => {
   TextoMessage +=`Total: $${Total.toFixed(2)}`;
 };
 
-
-Cart = JSON.parse(sessionStorage.getItem("Cart"));
-// Cart = JSON.parse('[{"producto":{"nombre":"Ron","contenido":750,"marca":"Flor de caña","precio":34,"stock":22},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa 12 años","precio":42,"stock":20},"cantidad":2},{"producto":{"nombre":"Ron","contenido":750,"marca":"El abuelo","precio":32,"stock":24},"cantidad":1},{"producto":{"nombre":"Ron","contenido":1750,"marca":"Flor de caña","precio":62,"stock":18},"cantidad":1},{"producto":{"nombre":"Ron","contenido":750,"marca":"Zacapa XO","precio":60,"stock":30},"cantidad":1}]');
 document.addEventListener('DOMContentLoaded', () => { ShowCart() });
 
 // BOOTSTRAP FORM VALIDATION IMPORT
@@ -90,36 +99,11 @@ document.addEventListener('DOMContentLoaded', () => { ShowCart() });
 }
 )()
 
-// BOOSTRAP TOAST IMPORT CONFIRMAR DATOS
-function ToastDatos() {
-  const toastTrigger = document.getElementById('liveToastBtn');
-  const toastLiveExample = document.getElementById('liveToast');
-
-  if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-    toastBootstrap.show();
-
-  }
-}
-
-// BOOSTRAP TOAST IMPORT CONFIRMAR COMPRA
-function ToastCompra() {
-
-  const toastTriggertwo = document.getElementById('liveToastBtnTwo');
-  const toastLiveExampletwo = document.getElementById('liveToastTwo');
-
-  if (toastTriggertwo) {
-    const toastBootstraptwo = bootstrap.Toast.getOrCreateInstance(toastLiveExampletwo);
-    toastBootstraptwo.show();
-  }
-}
-
-// BOOSTRAP TOAST CONFIRMAR DATOS INNER
-function ToastDatosInner() {
+function ToastInner(id1,id2) {
 
   BtnDatos.innerHTML += `
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id=${id2} class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header d-flex justify-content-start align-items-center">
         <div class="wrapper">
           <svg class="checkmark" xmlns="http://www.w3.org/2000/svg"
@@ -135,57 +119,23 @@ function ToastDatosInner() {
       </div>
     </div>
   </div>`;
-  ToastDatos();
+
+  let toastTrigger = document.getElementById(id1);
+  let toastLiveExample = document.getElementById(id2);
+
+  if (toastTrigger) {
+    let toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    toastBootstrap.show();
+
+  }
 }
-
-// BOOSTRAP TOAST CONFIRMAR COMPRA INNER
-function ToastCompraInner() {
-  BtnDatosTwo.innerHTML += `
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToastTwo" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header d-flex justify-content-start align-items-center">
-        <div class="wrapper">
-          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-              <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-              <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-          </svg>
-        </div>
-        <strong class="me-auto">${TextoToast}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast"
-          aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-`;
-  ToastCompra();
-}
-
-let Nombre = document.querySelector(".form__nombre");
-let Email = document.querySelector(".form__email");
-let Cell = document.querySelector(".form__cell");
-let Distrito = document.querySelector(".form__distrito");
-let Direccion = document.querySelector(".form__direccion");
-let Referencia = document.querySelector(".form__referencia");
-
-
-// FUNCION TEXTOLISTA
-function Textolista(el) {
-  (el.contenido >= 1000)
-    ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
-    : TextoLista = `${el.nombre} ${el.marca} ${el.contenido}ml`;
-}
-
-
-
-
-// EVENTOS
 
 // EVENTO CLICK PARA CONFIRMACION DE DATOS CON FORM VALIDATION
 ConfirmarDatos.addEventListener('click', () => {
   if (FormDatos.checkValidity()) {
     ConfirmarDatos.classList.replace('btn-outline-secondary', 'btn__ConfirmDatos')
-    TextoToast = "Validación de Datos Correcta"
-    ToastDatosInner();
+    TextoToast = "Validación de Datos Correcta";
+    ToastInner('liveToastBtn','liveToast');
     Atribute = 1;
     InfoCliente = {
       nombre: Nombre.value,
@@ -200,15 +150,14 @@ ConfirmarDatos.addEventListener('click', () => {
   };
 })
 
-
-// EVENTO CLICK PARA CONFIRMACION DE COMPRA/DATOS CON FORM VALIDATION && ATRIBUTO = 1
+// EVENTO CLICK PARA CONFIRMACION DE COMPRA/DATOS CON FORM DATOS VALIDATION && ATRIBUTO = 1
 ConfirmarCompra.addEventListener('click', () => {
   if (FormCompra.checkValidity() && Atribute == 1) {
     let Fecha = Date.now();
     let FechaCompra = new Date(Fecha);
     let InfoCompra =[];
     TextoToast = "Registro de Compra Correcta"
-    ToastCompraInner();
+    ToastInner('liveToastBtnTwo','liveToastTwo');
     InfoCompra =[ InfoCliente, Cart, FechaCompra.toDateString()];
     console.log(InfoCompra);
     HistorialClientes =[...HistorialClientes,InfoCompra];

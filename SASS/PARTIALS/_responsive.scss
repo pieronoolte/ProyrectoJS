@@ -108,12 +108,10 @@
     }
 
     .pay__total {
-        @include fontwsm(700, 15px, 0%, 0%);
+        @include fontwsm(900, 15px, 0%, 0%);
     }
 
 }
-
-
 
 @media(min-width: 550px) and (max-width: 650px) {
 

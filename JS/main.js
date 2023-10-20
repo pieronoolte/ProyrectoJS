@@ -55,7 +55,6 @@ async function TraerDatosPromociones(){
 
 document.addEventListener('DOMContentLoaded', () => {TraerDatosProductos()});
 
-
 function Textolista(el) {
     (el.contenido >= 1000)
         ? TextoLista = `${el.nombre} ${el.marca} ${(el.contenido / 1000).toFixed(2)}Lt`
@@ -90,7 +89,6 @@ async function ListaProductos(array, j) {
           `;
     });
 }
-
 
 if (AllProducts.length == 0) {
     CartTotal.innerHTML = `
@@ -149,7 +147,6 @@ const ShowCart = () => {
     };
 }
 
-
 // // FILTRO POR NAV DROPDOWN SEGUN CATEGORIA
 const FiltroProducto1 = document.querySelector(`#nav__list--all`);
 const FiltroProducto2 = document.querySelector(`#nav__list--ron`);
@@ -169,8 +166,6 @@ FiltroProducto5.addEventListener('click', () => { ListaProductos(ProductoVino, 1
 FiltroProducto6.addEventListener('click', () => { ListaProductos(ProductoGin, 18) });
 FiltroProducto7.addEventListener('click', () => { ListaProductos(ProductoBebidas, 21) });
 FiltroProducto8.addEventListener('click', () => { TraerDatosPromociones()});
-
-
 
 // EVENTO KEYUP FILTRO POR INPUT TEXT 
 document.addEventListener('keyup', e => {
@@ -253,4 +248,3 @@ rowProduct.addEventListener('click', e => {
         ShowCart();
     }
 });
-
